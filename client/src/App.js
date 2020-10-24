@@ -11,7 +11,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Switch>
-          <ProtectedRoute exact path="/" onLoginFail="/login" component={LandingPage} />
+          <ProtectedRoute exact path="/" onLoginFail="/login" component={LandingPage}/>
           <Route exact path="/login" component={Login} />
         </Switch>
       </Router>
