@@ -13,7 +13,7 @@ function App() {
     <Router>
       <UnPrivateRoute exact path = "/" component ={Login}/>
       <UnPrivateRoute path = "/signup" component ={Signup}/>
-      <PrivateRoute path = "/landing" roles = {["Provider", "Patient"]} component ={Landing}></PrivateRoute>
+      <PrivateRoute path = "/landing"  component ={Landing}></PrivateRoute>
 
     </Router>
 
