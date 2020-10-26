@@ -5,7 +5,7 @@ import { AuthContext } from "./../../context/AuthContext";
 // import './LandingPage.css';
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG'
-import { UploadOutlined } from '@ant-design/icons';
+import { UploadOutlined, EditOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 
 const LandingPage = () => {
@@ -81,8 +81,7 @@ const LandingPage = () => {
       </section>
       <Row
         justify="center"
-      >
-        <Col span={7}>
+
           <SeniorImage></SeniorImage>
 
         </Col>
