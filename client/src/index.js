@@ -4,14 +4,15 @@ import axios from "axios"
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { addAuthHeader } from './utils/auth';
+import AuthProvider from './context/AuthContext';
 
-axios.interceptors.request.use(addAuthHeader);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AuthProvider>
     <App />
-  </React.StrictMode>,
+
+  </AuthProvider>
+  ,
   document.getElementById('root')
 );
 
