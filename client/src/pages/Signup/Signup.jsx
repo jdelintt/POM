@@ -4,8 +4,8 @@ import {useHistory} from "react-router-dom"
 
 
 const Signup = props => {
-    let history = useHistory();
-    const [user, setUser] = useState({ username: "", password: "", firstName: "", lastName: "", role: "" })
+    // let history = useHistory();
+    const [user, setUser] = useState({ username: "", password: "", firstName: "", lastName: "", role: "", email : "" })
 
 
     const handleInputChange = (event) => {
@@ -20,14 +20,14 @@ const Signup = props => {
         API.signup(user).then(res => {
             console.log(res)
             resetForm();
-            history.push("/login")
+            // history.push("/login")
 
 
         })
     }
 
     const resetForm = () => {
-        setUser({ firstName: "", lastName: "", role: "", username: "", password: "" })
+        setUser({ firstName: "", lastName: "", role: "", username: "", password: "", email : "" })
     }
 
     return (

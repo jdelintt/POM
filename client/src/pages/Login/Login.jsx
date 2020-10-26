@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import API from "./../../utils/API";
 import { AuthContext } from './../../context/AuthContext';
-import {useHistory} from "react-router-dom"
+import {useHistory, Redirect} from "react-router-dom"
 
 const Login = props => {
-    let history = useHistory();
+    // let  = useHistory();
     const [user, setUser] = useState({ username: "", password: "" })
     const [message, setMessage] = useState(null)
     const authContext = useContext(AuthContext);
@@ -22,8 +22,8 @@ const Login = props => {
             if (isAuthenticated) {
                 authContext.setUser(user);
                 authContext.setIsAuthenticated(isAuthenticated);
+                return
               }
-              history.push("/landing")
 
         })
     }
