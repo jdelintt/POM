@@ -1,22 +1,24 @@
-const express = require("express"),
-      app = express(),
-      mongoose = require("mongoose"),
-      passport = require("passport"),
-      apiRoutes = require("./routes"),
-      PORT = process.env.PORT || 3001;
-require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cookieParserInstance = require('cookie-parser');
+
+const app = express();
+
+const PORT = process.env.PORT || 3001;
+
+const userRoutes = require("./routes/userRoutes")
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(cookieParserInstance());
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-  }
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/POM", {useNewUrlParser : true, useUnifiedTopology : true}, () => {
+    console.log("connected")
+})
 
-app.use(apiRoutes);
+app.use("/api" , userRoutes)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/myproject", { useNewUrlParser: true });
 
-app.listen(PORT, () => console.log(`The server has started on PORT: ${PORT}`));
+app.listen(PORT, () => {
+    console.log("app listening at port " + PORT)
+})
