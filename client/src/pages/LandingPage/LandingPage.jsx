@@ -81,10 +81,11 @@ const LandingPage = () => {
       </section>
       <Row
         justify="center"
+        >
 
           <SeniorImage></SeniorImage>
+       
 
-        </Col>
 
 
 
