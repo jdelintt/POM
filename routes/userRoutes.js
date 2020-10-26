@@ -1,6 +1,10 @@
 const express = require("express");
 const userRouter = express.Router();
 const passport = require("passport");
+const path = require("path");
+const crypto = require("crypto");
+const multer = require("multer")
+const GridFsStorage = require("multer-gridfs-storage")
 const passportConfig = require("./../configs/passport");
 const jwt = require("jsonwebtoken");
 const User = require("./../models/user");
@@ -15,7 +19,7 @@ const signToken = userId => {
 
 userRouter.post("/signup", (req, res) => {
     console.log(req.body)
-    const {firstName, lastName, username, password, role} = req.body;
+    const {firstName, lastName, username, password, role, email} = req.body;
     User.findOne({username}, (err, user) => {
         if (err) {
             res.status(500).json({msg : {msgBody: err, msgFlag: true}})
@@ -29,7 +33,8 @@ userRouter.post("/signup", (req, res) => {
                 lastName,
                 username,
                 password,
-                role
+                role,
+                email
             })
             res.status(201).json({msg : {msgBody: "we did it", msgFlag: false}})
         }
