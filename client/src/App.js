@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login"
 import Signup from "./pages/Signup/Signup"
 import PrivateRoute from "./HighOrderComponents/PrivateRoute"
 import UnPrivateRoute from "./HighOrderComponents/UnPrivateRoute"
+import PDF from "./pages/PDFTrial/PDFTrial"
 
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -14,6 +15,7 @@ function App() {
       <UnPrivateRoute exact path = "/" component ={Login}/>
       <UnPrivateRoute path = "/signup" component ={Signup}/>
       <PrivateRoute path = "/landing"  component ={Landing}></PrivateRoute>
+      <PrivateRoute path = "/pdf"  component ={PDF}></PrivateRoute>
 
     </Router>
 

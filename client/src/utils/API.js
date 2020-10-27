@@ -37,10 +37,25 @@ export default {
             .then(res => res.json())
             .then(data => data)
     },
+    medicalFormsADR: (fileObj) => {
+        return fetch("/api/ADR/files", {
+            method: "PUT",
+            body: JSON.stringify(fileObj),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            res.json()
+        })
+    },
+    getUser: (user) => {
+        return fetch("/api/user/" + user)
+            .then(res => res.json())
+            .then(data => data)
+    },
     isAuthenticated: () => {
         return fetch("/api/stayAuthenticated")
             .then(res => {
-                console.log("step")
                 if (res.status !== 401) {
                     return res.json().then(data => data)
                 }
