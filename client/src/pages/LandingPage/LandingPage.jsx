@@ -75,7 +75,7 @@ const LandingPage = () => {
   return (
     <>
       <section id="parallax-world-of-ugg">
-      <AwesomeButton variant="twitter"onClick={handleLogout}>LOG OUT</AwesomeButton>
+      <AwesomeButton variant="twitter"onClick={handleLogout}>LOGOUT</AwesomeButton>
       
         {/* <button onClick={handleLogout}>Logout</button> */}
         <section>
