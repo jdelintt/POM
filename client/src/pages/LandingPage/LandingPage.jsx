@@ -1,21 +1,39 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import AwesomeButton from "../../components/AwesomeButton/Button";
 
 
 // import './LandingPage.css';
-import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd';
-import SeniorImage from '../../utils/SVG/SeniorSVG';
-import { UploadOutlined, EditOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+
+import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
+import SeniorImage from '../../utils/SVG/SeniorSVG'
+import { UploadOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css'
+
+
 
 
 
 const LandingPage = () => {
+
   const { user } = useContext(AuthContext);
 
-  console.log(user)
+  const [PDF, setPDF] = useState({base64 : "", type : ""});
+  const [userData, setUserdata] = useState({})
+
+  useEffect(() => {
+    if (user.username) {
+      API.getUser(user.username)
+      .then(res => {
+        setUserdata(res)
+      })
+
+    }
+  }, [user])
+
+  console.log(userData)
+
 
   const fullName = `${user.firstName} ${user.lastName}`
   const { Meta } = Card
@@ -44,11 +62,13 @@ const LandingPage = () => {
 
   const props = {
     name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    id: "originalADRUpload",
     headers: {
       authorization: 'authorization-text',
     },
-    onChange(info) {
+    onChange(e, info) {
+      handleBase64(e)
+
       if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
@@ -67,6 +87,46 @@ const LandingPage = () => {
       format: percent => `${parseFloat(percent.toFixed(2))}%`,
     },
   };
+
+  const submitADR = (obj) => {
+    API.medicalFormsADR(obj)
+      .then(res => {
+        console.log(res)
+      })
+  }
+
+
+  const handleBase64 = async (event) => {
+    console.log(event.target)
+    const file = event.target.files[0]
+    const basedIt = await convertToBase64(file)
+    const pdfArray = await basedIt.split(",")
+    const pdfTypeArray1 = await pdfArray[0].split(";")
+    const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
+    
+    setPDF({base64 : basedIt, type : pdfTypeArray2[1]})
+    setUserdata({...userData, ADirFile : basedIt, ADirFileType : pdfTypeArray2[1]})
+    
+
+  }
+
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file)
+
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      }
+
+      fileReader.onerror = (err) => {
+        reject(err)
+      }
+    })
+  }
+
+
 
 
 
@@ -87,11 +147,11 @@ const LandingPage = () => {
       </section>
       <Row
         justify="center"
-        >
-
+      >
+        <Col span={7}>
           <SeniorImage></SeniorImage>
-       
 
+        </Col>
 
 
 
@@ -155,9 +215,22 @@ const LandingPage = () => {
         justify="center"
         style={{ backgroundColor: "#ffd666" }}
       >
-        <Upload {...props}>
+        {/* <Upload {...props}>
           <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload>
+        </Upload> */}
+        <form >
+          <div className="custom-file mb-3">
+            <input type="file" onChange={(e) => {
+              handleBase64(e)
+            }} />
+          </div>
+          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick = {() => submitADR(userData)} />
+        </form>
+        {/* <embed src={PDF.base64} type={PDF.type} /> */}
+        {console.log(PDF.type)}
+        {PDF.type.includes("image") ? <img src={PDF.base64}/> : <embed src={PDF.base64} type={PDF.type} />}
+
+
 
         <Divider>OR FILL OUT FORM HERE</Divider>
 
