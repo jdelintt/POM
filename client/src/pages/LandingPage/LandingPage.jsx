@@ -1,12 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
-<<<<<<< HEAD
 import ESign from "./../../components/eSign"
-=======
 import AwesomeButton from "../../components/AwesomeButton/Button";
-
->>>>>>> 5daa54ee0d884288e409cadf66166b4d599c3564
 
 // import './LandingPage.css';
 
