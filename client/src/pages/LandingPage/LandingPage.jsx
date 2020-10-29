@@ -5,7 +5,7 @@ import { AuthContext } from "./../../context/AuthContext";
 // import './LandingPage.css';
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG'
-import { UploadOutlined } from '@ant-design/icons';
+import PDFCreation from '../Forms/AdvancedDirective'
 import 'antd/dist/antd.css'
 
 
@@ -266,7 +266,7 @@ const LandingPage = () => {
       </Row>
 
 
-
+<PDFCreation></PDFCreation>
 
     </>
   )
