@@ -1,13 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
+<<<<<<< HEAD
 import ESign from "./../../components/eSign"
+=======
+import AwesomeButton from "../../components/AwesomeButton/Button";
+
+>>>>>>> 5daa54ee0d884288e409cadf66166b4d599c3564
 
 // import './LandingPage.css';
+
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG'
-import { UploadOutlined } from '@ant-design/icons';
+import PDFCreation from '../Forms/AdvancedDirective'
 import 'antd/dist/antd.css'
+
 
 
 
@@ -131,9 +138,10 @@ const LandingPage = () => {
 
   return (
     <>
-
       <section id="parallax-world-of-ugg">
-        <button onClick={handleLogout}>Logout</button>
+      <AwesomeButton variant="twitter"onClick={handleLogout}>LOGOUT</AwesomeButton>
+      
+        {/* <button onClick={handleLogout}>Logout</button> */}
         <section>
           <div className="title">
             <h3>{user.username}</h3>
@@ -272,7 +280,7 @@ const LandingPage = () => {
       </Row>
 
 
-
+<PDFCreation></PDFCreation>
 
     </>
   )
