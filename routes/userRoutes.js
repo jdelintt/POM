@@ -1,13 +1,12 @@
 const express = require("express");
 const userRouter = express.Router();
 const passport = require("passport");
-const path = require("path");
-const crypto = require("crypto");
-const multer = require("multer")
-const GridFsStorage = require("multer-gridfs-storage")
+const nodemailer = require("nodemailer");
 const passportConfig = require("../configs/passport");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Sign = require("../models/sign");
+
 
 
 const signToken = userId => {
@@ -19,7 +18,7 @@ const signToken = userId => {
 
 userRouter.post("/signup", (req, res) => {
     console.log(req.body)
-    const { firstName, lastName, username, password, role, email, ADir } = req.body;
+    const { firstName, lastName, username, password, role, email } = req.body;
     User.findOne({ username }, (err, user) => {
         if (err) {
             res.status(500).json({ msg: { msgBody: err, msgFlag: true } })
@@ -36,7 +35,8 @@ userRouter.post("/signup", (req, res) => {
                 role,
                 email,
                 ADirFile: "",
-                ADirFileType: ""
+                ADirFileType: "",
+                signatures: []
             })
             res.status(201).json({ msg: { msgBody: "we did it", msgFlag: false } })
         }
@@ -73,7 +73,7 @@ userRouter.get("/user/:user", passport.authenticate("jwt", { session: false }), 
 
 userRouter.put("/ADR/files", (req, res) => {
     console.log(req.body)
-    const { username, password, firstName, lastName, _id, role, email, ADirFile, ADirFileType } = req.body
+    const { username, password, firstName, lastName, _id, role, email, ADirFile, ADirFileType, signatures } = req.body
     User.findOneAndUpdate({ _id: _id }, {
         $set: {
             username,
@@ -84,7 +84,8 @@ userRouter.put("/ADR/files", (req, res) => {
             role,
             email,
             ADirFile,
-            ADirFileType
+            ADirFileType,
+            signatures
         }
     }, (err, data) => {
         if (err) {
@@ -94,10 +95,81 @@ userRouter.put("/ADR/files", (req, res) => {
         }
         else {
             res.json(data)
-            console.log("you did it, all fucking noght bro")
         }
     })
 })
+
+userRouter.post("/email/send", (req, res) => {
+    console.log(req.body)
+
+
+    const output = `
+    <p>This is a new Client who needs there medical form faxed over to there doctors</p>
+    <h3>Contact Details</h3>
+    <ul>  
+      <li>Form number 1: 
+      </li>
+
+    </ul>
+
+  `;
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: 'oelucy@gmail.com', // generated ethereal user
+        pass: 'lucybig12'  // generated ethereal password
+    },
+    tls:{
+      rejectUnauthorized:false
+    }
+  });
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+      from: '"Nodemailer Contact" <oelucy@gmail.com>', // sender address
+      to: 'oelucy@gmail.com', // list of receivers
+      subject: 'Node Contact Request', // Subject line
+      text: 'Hello world?', // plain text body
+      html: output,
+      attachments:  [
+          {
+              filename : "AdvancedDirective.pdf",
+              path : req.body.ADirFile
+          }
+      ]
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message sent: %s', info.messageId);   
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+      res.render('contact', {msg:'Email has been sent'});
+  });
+})
+
+userRouter.post("/sign/trail", (req, res) => {
+    const {trimmedURI, timesStarted, timesEnded, username} = req.body;
+    Sign.create({
+        trimmedURI,
+        timesStarted,
+        timesEnded,
+        whoSigned : timesEnded[0].title,
+        username
+    }, (error, info) => {
+        if (error) throw error;
+        res.json(info)
+    })
+})
+
+
 
 
 

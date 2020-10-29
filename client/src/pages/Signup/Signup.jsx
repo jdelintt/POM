@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import API from "./../../utils/API";
-import {useHistory} from "react-router-dom"
 
 
 const Signup = props => {
-    // let history = useHistory();
     const [user, setUser] = useState({ username: "", password: "", firstName: "", lastName: "", role: "", email : "" })
 
 
@@ -20,7 +18,6 @@ const Signup = props => {
         API.signup(user).then(res => {
             console.log(res)
             resetForm();
-            // history.push("/login")
 
 
         })

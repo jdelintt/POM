@@ -15,11 +15,19 @@ const PDF = props => {
 
     }, [user])
 
+    const handleEmailSubmit = (data) => {
+        API.emailSubmit(data)
+        .then(res => {
+            console.log(res)
+        })
+    }
+
     return (
         <div>
             <h1>Advanced Directive</h1>
-            {userData.ADirFileType.includes("image") ? <img src={userData.ADirFile} /> : <embed src={userData.ADirFile} type={userData.ADirFileType} />}
-
+            {userData.ADirFileType.includes("image") ? <img src={userData.ADirFile} /> : <iframe src={userData.ADirFile} type={userData.ADirFileType} />}
+            <button onClick = {() => handleEmailSubmit(userData)}>Submit</button>
+            
         </div>
 
     )
