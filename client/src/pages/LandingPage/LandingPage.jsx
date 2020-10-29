@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
+import ESign from "./../../components/eSign"
 
 // import './LandingPage.css';
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
@@ -85,7 +86,7 @@ const LandingPage = () => {
   };
 
   const submitADR = (obj) => {
-    API.medicalFormsADR(obj)
+    API.userUpdate(obj)
       .then(res => {
         console.log(res)
       })
@@ -224,6 +225,11 @@ const LandingPage = () => {
         {/* <embed src={PDF.base64} type={PDF.type} /> */}
         {console.log(PDF.type)}
         {PDF.type.includes("image") ? <img src={PDF.base64}/> : <embed src={PDF.base64} type={PDF.type} />}
+
+        <ESign
+        buttonText = "Patient Signature"
+        whosSigning = "patientSignature"
+        ></ESign>
 
 
 

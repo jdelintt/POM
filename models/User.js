@@ -36,6 +36,10 @@ const userSchema = new Schema({
     ADirFileType : {
         type : String
 
+    },
+    signatures : {
+        type : Array
+
     }
 
 })
