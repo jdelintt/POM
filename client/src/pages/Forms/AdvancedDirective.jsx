@@ -12,8 +12,8 @@ const ExportPDF = () => {
   const [formLayout, setFormLayout] = useState('horizontal');
 
     const inputEl = useRef(null);
-  const onButtonClick = () => {
-    inputEl.current.save();
+    const onButtonClick = () => {
+        inputEl.current.save();
     }
 
     const onFormLayoutChange = ({ layout }) => {
@@ -165,6 +165,6 @@ Click me
 </>
         
     )
-    }
+}
 
 export default ExportPDF

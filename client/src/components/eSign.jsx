@@ -46,7 +46,7 @@ function ESign(props) {
         pad: {
             width: "500px",
             justifycontent: "center",
-            minheight: "500px",
+            minheight: "200px",
             border: "1px solid black"
 
         }

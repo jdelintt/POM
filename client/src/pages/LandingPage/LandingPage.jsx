@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign"
-
-
+import {useHistory} from 'react-router-dom'
 
 // import './LandingPage.css';
 
@@ -18,17 +17,19 @@ import 'antd/dist/antd.css'
 
 const LandingPage = () => {
 
-  const { user } = useContext(AuthContext);
+  let history = useHistory()
 
-  const [PDF, setPDF] = useState({base64 : "", type : ""});
+  const { user, isAuthenticated } = useContext(AuthContext);
+
+  const [PDF, setPDF] = useState({ base64: "", type: "" });
   const [userData, setUserdata] = useState({})
 
   useEffect(() => {
     if (user.username) {
       API.getUser(user.username)
-      .then(res => {
-        setUserdata(res)
-      })
+        .then(res => {
+          setUserdata(res)
+        })
 
     }
   }, [user])
@@ -59,6 +60,13 @@ const LandingPage = () => {
 
   const handleLogout = () => {
     API.logout().then(res => console.log(res))
+    history.push("/")
+  }
+
+  const handlePDF = () => {
+    if (isAuthenticated) {
+      history.push("/pdf")
+    }
   }
 
   const props = {
@@ -104,10 +112,10 @@ const LandingPage = () => {
     const pdfArray = await basedIt.split(",")
     const pdfTypeArray1 = await pdfArray[0].split(";")
     const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
-    
-    setPDF({base64 : basedIt, type : pdfTypeArray2[1]})
-    setUserdata({...userData, ADirFile : basedIt, ADirFileType : pdfTypeArray2[1]})
-    
+
+    setPDF({ base64: basedIt, type: pdfTypeArray2[1] })
+    setUserdata({ ...userData, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
+
 
   }
 
@@ -135,18 +143,11 @@ const LandingPage = () => {
 
   return (
     <>
-      <section id="parallax-world-of-ugg">
-      
-      
-        {/* <button onClick={handleLogout}>Logout</button> */}
-        <section>
-          <div className="title">
-            <h3>{user.username}</h3>
-            {/* <h1>{fullName(user)}</h1> */}
-          </div>
+
+     <section id="parallax-world-of-ugg">
+
         </section>
-      </section>
-      <Row
+        <Row
         justify="center"
       >
         <Col span={7}>
@@ -160,7 +161,7 @@ const LandingPage = () => {
 
       </Row>
 
-      <Row
+        <Row
         justify="center"
         style={{ backgroundColor: "#fff1b8" }}
       >
@@ -172,7 +173,7 @@ const LandingPage = () => {
         </section>
 
       </Row>
-      <Row
+        <Row
         justify="center"
         style={{ backgroundColor: "#fff1b8" }}
       >
@@ -212,13 +213,11 @@ const LandingPage = () => {
         </Card>
 
       </Row>
-      <Row
+        <Row
         justify="center"
         style={{ backgroundColor: "#ffd666" }}
       >
-        {/* <Upload {...props}>
-          <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload> */}
+
         <form >
           <div className="custom-file mb-3">
             <input type="file" onChange={(e) => {
@@ -227,7 +226,6 @@ const LandingPage = () => {
           </div>
           <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick = {() => submitADR(userData)} />
         </form>
-        {/* <embed src={PDF.base64} type={PDF.type} /> */}
         {console.log(PDF.type)}
         {PDF.type.includes("image") ? <img src={PDF.base64}/> : <embed src={PDF.base64} type={PDF.type} />}
 
@@ -277,7 +275,7 @@ const LandingPage = () => {
       </Row>
 
 
-<PDFCreation></PDFCreation>
+        <PDFCreation></PDFCreation>
 
     </>
   )
