@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './LandingPage.css';
 import ESign from "./../../components/eSign"
 
+import './LandingPage.css';
+
+
 
 
 
@@ -150,10 +153,13 @@ const LandingPage = () => {
     <>
       <section id="parallax-world-of-ugg">
 
-
+      
         <button onClick={handleLogout}>Logout</button>
+
+
+
       
-      
+
         <section>
           <div className="title">
             <h3>{user.username}</h3>
