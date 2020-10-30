@@ -1,29 +1,29 @@
 import React, { useContext, useState } from 'react';
 import API from "./../../utils/API";
 import { AuthContext } from './../../context/AuthContext';
-import {useHistory, Redirect} from "react-router-dom"
 
 const Login = props => {
     // let  = useHistory();
     const [user, setUser] = useState({ username: "", password: "" })
-    const [message, setMessage] = useState(null)
     const authContext = useContext(AuthContext);
 
     const handleInputChange = (event) => {
         event.preventDefault()
         setUser({...user, [event.target.name] : event.target.value})
-        console.log(user)
     }
     const handleLogin = (event) => {
         event.preventDefault()
         API.login(user).then(res => {
-            console.log(res)
-            const {isAuthenticated, user, msg} = res;
+            const {isAuthenticated, user} = res;
             if (isAuthenticated) {
-                authContext.setUser(user);
+                console.log(user)
+                API.getUser(user)
+                .then(res => {
+                    authContext.setUser(res);
+                    
+                })
                 authContext.setIsAuthenticated(isAuthenticated);
-                localStorage.setItem("logged", true)
-                localStorage.setItem("user", user)
+
 
               }
 

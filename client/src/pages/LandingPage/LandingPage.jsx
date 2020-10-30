@@ -25,6 +25,7 @@ const LandingPage = () => {
 
   console.log(user)
 
+  console.log(user)
 
   const { Meta } = Card
 
@@ -58,9 +59,8 @@ const LandingPage = () => {
   }
 
   const handlePDF = () => {
-    if (isAuthenticated) {
-      history.push("/pdf")
-    }
+    history.push("/pdf")
+
   }
 
   const props = {
@@ -129,154 +129,166 @@ const LandingPage = () => {
     })
   }
 
+  const renderPage = () => {
+    if (user) {
+      if (user.firstName) {
+        return (
+          <>
+
+            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handlePDF}>PDF</button>
 
 
+            <section id="parallax-world-of-ugg">
+
+            </section>
+            <Row
+              justify="center"
+            >
+              <Col span={7}>
+                <SeniorImage></SeniorImage>
+
+              </Col>
+
+
+
+
+
+            </Row>
+
+            <Row
+              justify="center"
+              style={{ backgroundColor: "#fff1b8" }}
+            >
+              <section id="instructional-part">
+                <div className="ins">
+                  <h1>Instructions</h1>
+                </div>
+
+              </section>
+
+            </Row>
+            <Row
+              justify="center"
+              style={{ backgroundColor: "#fff1b8" }}
+            >
+
+              <Col
+                span={8}
+              >
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                >
+                  <Meta title="Step One" description="Fill out your medical information in the DNR Document Creator below" />
+                </Card>
+
+              </Col>
+              <Col
+                span={8}
+              >
+
+                <Card
+                  hoverable
+                  style={{ width: 240 }}
+                  cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                >
+                  <Meta title="Step Two" description="Click Save and Create to generate a DNR document" />
+                </Card>
+              </Col>
+
+
+              <Card
+                hoverable
+                style={{ width: 240 }}
+                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+              >
+                <Meta title="Step Three" description="Find all your documents in the Medical Document section at the top of the page" />
+              </Card>
+
+            </Row>
+            <Row
+              justify="center"
+              style={{ backgroundColor: "#ffd666" }}
+            >
+
+              <form >
+                <div className="custom-file mb-3">
+                  <input type="file" onChange={(e) => {
+                    handleBase64(e)
+                  }} />
+                </div>
+                <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(user)} />
+              </form>
+              {console.log(PDF.type)}
+              {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
+
+              <ESign
+                buttonText="Patient Signature"
+                whosSigning="patientSignature"
+              ></ESign>
+
+
+
+              <Divider>OR FILL OUT FORM HERE</Divider>
+
+
+              <Form
+                {...layout}
+                name="basic"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+              >
+                <Form.Item
+                  label="Username"
+                  name="username"
+                  rules={[{ required: true, message: 'Please input your username!' }]}
+                >
+                  <Input />
+                </Form.Item>
+
+                <Form.Item
+                  label="Password"
+                  name="password"
+                  rules={[{ required: true, message: 'Please input your password!' }]}
+                >
+                  <Input.Password />
+                </Form.Item>
+
+                <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+                  <Checkbox>Remember me</Checkbox>
+                </Form.Item>
+
+                <Form.Item {...tailLayout}>
+                  <Button type="primary" htmlType="submit">
+                    Submit
+              </Button>
+                </Form.Item>
+              </Form>
+            </Row>
+
+
+            <PDFCreation></PDFCreation>
+
+          </>
+        )
+      }
+    }
+  }
 
 
 
 
   return (
     <>
-
-    <button onClick = {handleLogout}>Logout</button>
-    <button onClick = {handlePDF}>PDF</button>
-
-
-      <section id="parallax-world-of-ugg">
-
-      </section>
-      <Row
-        justify="center"
-      >
-        <Col span={7}>
-          <SeniorImage></SeniorImage>
-
-        </Col>
-
-
-
-
-
-      </Row>
-
-      <Row
-        justify="center"
-        style={{ backgroundColor: "#fff1b8" }}
-      >
-        <section id="instructional-part">
-          <div className="ins">
-            <h1>Instructions</h1>
-          </div>
-
-        </section>
-
-      </Row>
-      <Row
-        justify="center"
-        style={{ backgroundColor: "#fff1b8" }}
-      >
-
-        <Col
-          span={8}
-        >
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-          >
-            <Meta title="Step One" description="Fill out your medical information in the DNR Document Creator below" />
-          </Card>
-
-        </Col>
-        <Col
-          span={8}
-        >
-
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-          >
-            <Meta title="Step Two" description="Click Save and Create to generate a DNR document" />
-          </Card>
-        </Col>
-
-
-        <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-        >
-          <Meta title="Step Three" description="Find all your documents in the Medical Document section at the top of the page" />
-        </Card>
-
-      </Row>
-      <Row
-        justify="center"
-        style={{ backgroundColor: "#ffd666" }}
-      >
-
-        <form >
-          <div className="custom-file mb-3">
-            <input type="file" onChange={(e) => {
-              handleBase64(e)
-            }} />
-          </div>
-          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(user)} />
-        </form>
-        {console.log(PDF.type)}
-        {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
-
-        <ESign
-          buttonText="Patient Signature"
-          whosSigning="patientSignature"
-        ></ESign>
-
-
-
-        <Divider>OR FILL OUT FORM HERE</Divider>
-
-
-        <Form
-          {...layout}
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-        </Button>
-          </Form.Item>
-        </Form>
-      </Row>
-
-
-      <PDFCreation></PDFCreation>
-
+      {renderPage()}
     </>
   )
+
+
+
 };
 
 export default LandingPage;

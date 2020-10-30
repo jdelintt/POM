@@ -21,15 +21,13 @@ function ESign(props) {
 
     })
 
+
     useEffect(() => {
-        if (user) {
-            if (user.firstName) {
-                API.userUpdate(user)
-                    .then(res => console.log(res))
-            }
+
+        if (user.firstName) {
+            API.userUpdate(user)
+                .then(res => console.log(res))
         }
-
-
 
     }, [user])
 

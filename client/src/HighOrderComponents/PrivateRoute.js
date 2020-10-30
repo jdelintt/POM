@@ -4,8 +4,6 @@ import {AuthContext} from "./../context/AuthContext";
 
 const PrivateRoute = ({component : Component,roles, ...rest}) => {
     const {isAuthenticated, user} = useContext(AuthContext);
-    const logged = localStorage.getItem("logged")
-    console.log(logged)
     return (
         <Route {...rest} render = {props => {
             if (!isAuthenticated) {

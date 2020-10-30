@@ -4,7 +4,7 @@ import API from "./../utils/API"
 export const AuthContext = createContext()
 
 function Auth (props) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoaded, setIsLoaded] = useState(true);
 
