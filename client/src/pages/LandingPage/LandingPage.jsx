@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign"
-import AwesomeButton from "../../components/AwesomeButton/Button";
+
+
 
 // import './LandingPage.css';
 
@@ -135,7 +136,7 @@ const LandingPage = () => {
   return (
     <>
       <section id="parallax-world-of-ugg">
-      <AwesomeButton variant="twitter"onClick={handleLogout}>LOGOUT</AwesomeButton>
+      
       
         {/* <button onClick={handleLogout}>Logout</button> */}
         <section>
