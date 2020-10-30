@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
-import ESign from "./../../components/eSign"
+import ESign from "./../../components/eSign";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './LandingPage.css';
+import './LandingPage.css';
 
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG'
@@ -169,19 +169,20 @@ const LandingPage = () => {
 
       <Row
         justify="center"
-        style={{ backgroundColor: "#fff1b8" }}
+        style={{ backgroundColor: "#bfbfbe" }}
       >
         <section id="instructional-part">
           <div className="ins">
-            <h1 style={{textAlign: "center"}}>Instructions</h1>
+            <h1 id="instructionsHeading">Instructions</h1>
+            
           </div>
             <Jumbotron style={styles.JumboStyles} fluid="lg">
             <Container fluid="lg">
           <Col >
-              <h1>STEP 1</h1>
-              <p>
-                This is a modified jumbotron that occupies the entire horizontal space of
-                its parent.
+              <h1 className="stepHeader">STEP 1</h1> 
+              
+              <p className="jumboText">
+                Fill out the form below the instructions section.
               </p>
           </Col>
             </Container>
@@ -189,10 +190,9 @@ const LandingPage = () => {
           <Jumbotron style={styles.JumboStyles} fluid="lg">
             <Container fluid="lg">
           <Col >
-              <h1>STEP 2</h1>
-              <p>
-                This is a modified jumbotron that occupies the entire horizontal space of
-                its parent.
+              <h1 className="stepHeader">STEP 2</h1>
+              <p className="jumboText">
+                Make sure every input has your information and if you are confused about what to put in there, click the "?"
               </p>
           </Col>
             </Container>
@@ -200,10 +200,39 @@ const LandingPage = () => {
           <Jumbotron style={styles.JumboStyles} fluid="lg">
             <Container fluid="lg">
           <Col >
-              <h1>STEP 3</h1>
-              <p>
-                This is a modified jumbotron that occupies the entire horizontal space of
-                its parent.
+              <h1 className="stepHeader">STEP 3</h1>
+              <p className="jumboText">
+                Once all the information has been inputted, click "Create Advanced Directive".
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 4</h1>
+              <p className="jumboText">
+                The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 5</h1>
+              <p className="jumboText">
+                Click the "upload" button and select the Advanced Directive file that you just saved.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 6</h1>
+              <p className="jumboText">
+                Now enjoy your Peace Of Mind!
               </p>
           </Col>
             </Container>
