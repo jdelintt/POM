@@ -17,7 +17,8 @@ const styles = {
     width: "80vw",
     textAlign: "center",
     margin: "40px",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    boxShadow: "12px 12px 16px #708090"
   }
 }
 
