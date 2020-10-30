@@ -1,15 +1,34 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
-import ESign from "./../../components/eSign"
+import ESign from "./../../components/eSign";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './LandingPage.css';
+import ESign from "./../../components/eSign"
+
+import './LandingPage.css';
+
+
+
+
+
 
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG'
 import PDFCreation from '../Forms/AdvancedDirective'
 import 'antd/dist/antd.css'
 
-
+const styles = {
+  JumboStyles: {
+    width: "80vw",
+    textAlign: "center",
+    margin: "40px",
+    borderRadius: "10px",
+    boxShadow: "12px 12px 16px #708090"
+  }
+}
 
 
 
@@ -17,15 +36,15 @@ const LandingPage = () => {
 
   const { user } = useContext(AuthContext);
 
-  const [PDF, setPDF] = useState({base64 : "", type : ""});
+  const [PDF, setPDF] = useState({ base64: "", type: "" });
   const [userData, setUserdata] = useState({})
 
   useEffect(() => {
     if (user.username) {
       API.getUser(user.username)
-      .then(res => {
-        setUserdata(res)
-      })
+        .then(res => {
+          setUserdata(res)
+        })
 
     }
   }, [user])
@@ -101,10 +120,10 @@ const LandingPage = () => {
     const pdfArray = await basedIt.split(",")
     const pdfTypeArray1 = await pdfArray[0].split(";")
     const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
-    
-    setPDF({base64 : basedIt, type : pdfTypeArray2[1]})
-    setUserdata({...userData, ADirFile : basedIt, ADirFileType : pdfTypeArray2[1]})
-    
+
+    setPDF({ base64: basedIt, type: pdfTypeArray2[1] })
+    setUserdata({ ...userData, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
+
 
   }
 
@@ -133,8 +152,14 @@ const LandingPage = () => {
   return (
     <>
       <section id="parallax-world-of-ugg">
+
       
         <button onClick={handleLogout}>Logout</button>
+
+
+
+      
+
         <section>
           <div className="title">
             <h3>{user.username}</h3>
@@ -158,13 +183,74 @@ const LandingPage = () => {
 
       <Row
         justify="center"
-        style={{ backgroundColor: "#fff1b8" }}
+        style={{ backgroundColor: "#bfbfbe" }}
       >
         <section id="instructional-part">
           <div className="ins">
-            <h1>Instructions</h1>
+            <h1 id="instructionsHeading">Instructions</h1>
+            
           </div>
-
+            <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 1</h1> 
+              
+              <p className="jumboText">
+                Fill out the form below the instructions section.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 2</h1>
+              <p className="jumboText">
+                Make sure every input has your information and if you are confused about what to put in there, click the "?"
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 3</h1>
+              <p className="jumboText">
+                Once all the information has been inputted, click "Create Advanced Directive".
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 4</h1>
+              <p className="jumboText">
+                The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 5</h1>
+              <p className="jumboText">
+                Click the "upload" button and select the Advanced Directive file that you just saved.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 6</h1>
+              <p className="jumboText">
+                Now enjoy your Peace Of Mind!
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
         </section>
 
       </Row>
@@ -173,9 +259,10 @@ const LandingPage = () => {
         style={{ backgroundColor: "#fff1b8" }}
       >
 
-        <Col
+        {/* <Col
           span={8}
         >
+          
           <Card
             hoverable
             style={{ width: 240 }}
@@ -184,8 +271,8 @@ const LandingPage = () => {
             <Meta title="Step One" description="Fill out your medical information in the DNR Document Creator below" />
           </Card>
 
-        </Col>
-        <Col
+        </Col> */}
+        {/* <Col
           span={8}
         >
 
@@ -196,16 +283,16 @@ const LandingPage = () => {
           >
             <Meta title="Step Two" description="Click Save and Create to generate a DNR document" />
           </Card>
-        </Col>
+        </Col> */}
 
 
-        <Card
+        {/* <Card
           hoverable
           style={{ width: 240 }}
           cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
         >
           <Meta title="Step Three" description="Find all your documents in the Medical Document section at the top of the page" />
-        </Card>
+        </Card> */}
 
       </Row>
       <Row
@@ -221,15 +308,15 @@ const LandingPage = () => {
               handleBase64(e)
             }} />
           </div>
-          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick = {() => submitADR(userData)} />
+          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(userData)} />
         </form>
         {/* <embed src={PDF.base64} type={PDF.type} /> */}
         {console.log(PDF.type)}
-        {PDF.type.includes("image") ? <img src={PDF.base64}/> : <embed src={PDF.base64} type={PDF.type} />}
+        {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
 
         <ESign
-        buttonText = "Patient Signature"
-        whosSigning = "patientSignature"
+          buttonText="Patient Signature"
+          whosSigning="patientSignature"
         ></ESign>
 
 
@@ -273,7 +360,7 @@ const LandingPage = () => {
       </Row>
 
 
-<PDFCreation></PDFCreation>
+      <PDFCreation></PDFCreation>
 
     </>
   )
