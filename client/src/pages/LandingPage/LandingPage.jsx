@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign"
-import AwesomeButton from "../../components/AwesomeButton/Button";
-
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import './LandingPage.css';
 
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
@@ -11,7 +12,14 @@ import SeniorImage from '../../utils/SVG/SeniorSVG'
 import PDFCreation from '../Forms/AdvancedDirective'
 import 'antd/dist/antd.css'
 
-
+const styles = {
+  JumboStyles: {
+    width: "80vw",
+    textAlign: "center",
+    margin: "40px",
+    borderRadius: "10px"
+  }
+}
 
 
 
@@ -19,15 +27,15 @@ const LandingPage = () => {
 
   const { user } = useContext(AuthContext);
 
-  const [PDF, setPDF] = useState({base64 : "", type : ""});
+  const [PDF, setPDF] = useState({ base64: "", type: "" });
   const [userData, setUserdata] = useState({})
 
   useEffect(() => {
     if (user.username) {
       API.getUser(user.username)
-      .then(res => {
-        setUserdata(res)
-      })
+        .then(res => {
+          setUserdata(res)
+        })
 
     }
   }, [user])
@@ -103,10 +111,10 @@ const LandingPage = () => {
     const pdfArray = await basedIt.split(",")
     const pdfTypeArray1 = await pdfArray[0].split(";")
     const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
-    
-    setPDF({base64 : basedIt, type : pdfTypeArray2[1]})
-    setUserdata({...userData, ADirFile : basedIt, ADirFileType : pdfTypeArray2[1]})
-    
+
+    setPDF({ base64: basedIt, type: pdfTypeArray2[1] })
+    setUserdata({ ...userData, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
+
 
   }
 
@@ -135,9 +143,9 @@ const LandingPage = () => {
   return (
     <>
       <section id="parallax-world-of-ugg">
-      <AwesomeButton variant="twitter"onClick={handleLogout}>LOGOUT</AwesomeButton>
-      
-        {/* <button onClick={handleLogout}>Logout</button> */}
+
+
+        <button onClick={handleLogout}>Logout</button>
         <section>
           <div className="title">
             <h3>{user.username}</h3>
@@ -165,9 +173,41 @@ const LandingPage = () => {
       >
         <section id="instructional-part">
           <div className="ins">
-            <h1>Instructions</h1>
+            <h1 style={{textAlign: "center"}}>Instructions</h1>
           </div>
-
+            <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1>STEP 1</h1>
+              <p>
+                This is a modified jumbotron that occupies the entire horizontal space of
+                its parent.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1>STEP 2</h1>
+              <p>
+                This is a modified jumbotron that occupies the entire horizontal space of
+                its parent.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1>STEP 3</h1>
+              <p>
+                This is a modified jumbotron that occupies the entire horizontal space of
+                its parent.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
         </section>
 
       </Row>
@@ -176,9 +216,10 @@ const LandingPage = () => {
         style={{ backgroundColor: "#fff1b8" }}
       >
 
-        <Col
+        {/* <Col
           span={8}
         >
+          
           <Card
             hoverable
             style={{ width: 240 }}
@@ -187,8 +228,8 @@ const LandingPage = () => {
             <Meta title="Step One" description="Fill out your medical information in the DNR Document Creator below" />
           </Card>
 
-        </Col>
-        <Col
+        </Col> */}
+        {/* <Col
           span={8}
         >
 
@@ -199,16 +240,16 @@ const LandingPage = () => {
           >
             <Meta title="Step Two" description="Click Save and Create to generate a DNR document" />
           </Card>
-        </Col>
+        </Col> */}
 
 
-        <Card
+        {/* <Card
           hoverable
           style={{ width: 240 }}
           cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
         >
           <Meta title="Step Three" description="Find all your documents in the Medical Document section at the top of the page" />
-        </Card>
+        </Card> */}
 
       </Row>
       <Row
@@ -224,15 +265,15 @@ const LandingPage = () => {
               handleBase64(e)
             }} />
           </div>
-          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick = {() => submitADR(userData)} />
+          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(userData)} />
         </form>
         {/* <embed src={PDF.base64} type={PDF.type} /> */}
         {console.log(PDF.type)}
-        {PDF.type.includes("image") ? <img src={PDF.base64}/> : <embed src={PDF.base64} type={PDF.type} />}
+        {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
 
         <ESign
-        buttonText = "Patient Signature"
-        whosSigning = "patientSignature"
+          buttonText="Patient Signature"
+          whosSigning="patientSignature"
         ></ESign>
 
 
@@ -276,7 +317,7 @@ const LandingPage = () => {
       </Row>
 
 
-<PDFCreation></PDFCreation>
+      <PDFCreation></PDFCreation>
 
     </>
   )
