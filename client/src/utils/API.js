@@ -37,9 +37,20 @@ export default {
             .then(res => res.json())
             .then(data => data)
     },
-    medicalFormsADR: (fileObj) => {
+    userUpdate: (user) => {
         return fetch("/api/ADR/files", {
             method: "PUT",
+            body: JSON.stringify(user),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            res.json()
+        })
+    },
+    emailSubmit: (fileObj) => {
+        return fetch("/api/email/send", {
+            method: "POST",
             body: JSON.stringify(fileObj),
             headers: {
                 "Content-Type": "application/json"
@@ -50,6 +61,17 @@ export default {
     },
     getUser: (user) => {
         return fetch("/api/user/" + user)
+            .then(res => res.json())
+            .then(data => data)
+    },
+    postSign: (sign) => {
+        return fetch("/api/sign/trail", {
+            method: "POST",
+            body: JSON.stringify(sign),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
             .then(res => res.json())
             .then(data => data)
     },
