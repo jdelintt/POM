@@ -6,12 +6,10 @@ export const AuthContext = createContext()
 export default (props) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(true);
 
-    console.log("step 1")
 
     useEffect(() => {
-        console.log("step 0")
         API.isAuthenticated().then(data => {
             setUser(data.user);
             setIsAuthenticated(data.isAuthenticated);

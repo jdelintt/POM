@@ -6,6 +6,7 @@ import PrivateRoute from "./HighOrderComponents/PrivateRoute"
 import UnPrivateRoute from "./HighOrderComponents/UnPrivateRoute"
 import PDF from "./pages/PDFTrial/PDFTrial"
 import ESign from "./components/eSign"
+import how from "./pages/pdf"
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <UnPrivateRoute path="/signup" component={Signup} />
       <PrivateRoute path="/landing" component={Landing}></PrivateRoute>
       <PrivateRoute path="/pdf" component={PDF}></PrivateRoute>
+      <Route path="/how" component = {how}/>
 
     </Router>
 
