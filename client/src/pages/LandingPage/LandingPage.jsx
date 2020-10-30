@@ -6,6 +6,11 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LandingPage.css';
+import ESign from "./../../components/eSign"
+
+
+
+
 
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG'
@@ -147,6 +152,8 @@ const LandingPage = () => {
 
 
         <button onClick={handleLogout}>Logout</button>
+      
+      
         <section>
           <div className="title">
             <h3>{user.username}</h3>
