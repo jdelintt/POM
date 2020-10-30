@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign"
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 // import './LandingPage.css';
 
@@ -19,25 +19,13 @@ const LandingPage = () => {
 
   let history = useHistory()
 
-  const { user, isAuthenticated } = useContext(AuthContext);
+  const { user, isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
 
   const [PDF, setPDF] = useState({ base64: "", type: "" });
-  const [userData, setUserdata] = useState({})
 
-  useEffect(() => {
-    if (user.username) {
-      API.getUser(user.username)
-        .then(res => {
-          setUserdata(res)
-        })
-
-    }
-  }, [user])
-
-  console.log(userData)
+  console.log(user)
 
 
-  const fullName = `${user.firstName} ${user.lastName}`
   const { Meta } = Card
 
   const layout = {
@@ -59,8 +47,14 @@ const LandingPage = () => {
   };
 
   const handleLogout = () => {
-    API.logout().then(res => console.log(res))
-    history.push("/")
+    API.logout().then(res => {
+      console.log(res)
+      setIsAuthenticated(false);
+    })
+      .then(() => {
+        history.push("/")
+
+      })
   }
 
   const handlePDF = () => {
@@ -114,7 +108,7 @@ const LandingPage = () => {
     const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
 
     setPDF({ base64: basedIt, type: pdfTypeArray2[1] })
-    setUserdata({ ...userData, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
+    setUser({ ...user, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
 
 
   }
@@ -144,10 +138,14 @@ const LandingPage = () => {
   return (
     <>
 
-     <section id="parallax-world-of-ugg">
+    <button onClick = {handleLogout}>Logout</button>
+    <button onClick = {handlePDF}>PDF</button>
 
-        </section>
-        <Row
+
+      <section id="parallax-world-of-ugg">
+
+      </section>
+      <Row
         justify="center"
       >
         <Col span={7}>
@@ -161,7 +159,7 @@ const LandingPage = () => {
 
       </Row>
 
-        <Row
+      <Row
         justify="center"
         style={{ backgroundColor: "#fff1b8" }}
       >
@@ -173,7 +171,7 @@ const LandingPage = () => {
         </section>
 
       </Row>
-        <Row
+      <Row
         justify="center"
         style={{ backgroundColor: "#fff1b8" }}
       >
@@ -213,7 +211,7 @@ const LandingPage = () => {
         </Card>
 
       </Row>
-        <Row
+      <Row
         justify="center"
         style={{ backgroundColor: "#ffd666" }}
       >
@@ -224,14 +222,14 @@ const LandingPage = () => {
               handleBase64(e)
             }} />
           </div>
-          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick = {() => submitADR(userData)} />
+          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(user)} />
         </form>
         {console.log(PDF.type)}
-        {PDF.type.includes("image") ? <img src={PDF.base64}/> : <embed src={PDF.base64} type={PDF.type} />}
+        {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
 
         <ESign
-        buttonText = "Patient Signature"
-        whosSigning = "patientSignature"
+          buttonText="Patient Signature"
+          whosSigning="patientSignature"
         ></ESign>
 
 
@@ -275,7 +273,7 @@ const LandingPage = () => {
       </Row>
 
 
-        <PDFCreation></PDFCreation>
+      <PDFCreation></PDFCreation>
 
     </>
   )

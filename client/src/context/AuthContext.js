@@ -11,10 +11,14 @@ function Auth (props) {
 
     useEffect(() => {
         API.isAuthenticated().then(data => {
-            setUser(data.user);
             setIsAuthenticated(data.isAuthenticated);
             setIsLoaded(true);
+            API.getUser(data.user.username)
+            .then(res => {
+                setUser(res)
+            })
         })
+
     }, [])
 
     return (
