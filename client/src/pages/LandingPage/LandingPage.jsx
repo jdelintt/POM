@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign"
-import AwesomeButton from "../../components/AwesomeButton/Button";
 import {useHistory} from 'react-router-dom'
 
 // import './LandingPage.css';
@@ -146,9 +145,6 @@ const LandingPage = () => {
     <>
 
      <section id="parallax-world-of-ugg">
-        <AwesomeButton variant="twitter"onClick={handleLogout}>LOGOUT</AwesomeButton>
-
-        <AwesomeButton variant="twitter"onClick={handlePDF}><p style = {{color : "white"}}>PDF</p></AwesomeButton>
 
         </section>
         <Row

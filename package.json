@@ -47,6 +47,7 @@
     "express-sessions": "^1.0.1",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.10.9",
     "nodemailer": "^6.4.14",
     "passport": "^0.4.1",
