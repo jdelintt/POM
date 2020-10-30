@@ -9,9 +9,15 @@ const PDF = props => {
 
     useEffect(() => {
 
-        API.getUser(user.username).then(res => {
-            setUserData(res)
-        })
+        if (user) {
+            if (user.username) {
+                API.getUser(user.username).then(res => {
+                    setUserData(res)
+                })
+            }
+
+        }
+
 
     }, [user])
 
@@ -21,13 +27,12 @@ const PDF = props => {
             console.log(res)
         })
     }
-
+    
     return (
         <div>
             <h1>Advanced Directive</h1>
             {userData.ADirFileType.includes("image") ? <img src={userData.ADirFile} /> : <iframe src={userData.ADirFile} type={userData.ADirFileType} />}
-            <button onClick = {() => handleEmailSubmit(userData)}>Submit</button>
-            
+            <button onClick = {() => handleEmailSubmit(userData)}>Submit</button>            
         </div>
 
     )

@@ -22,7 +22,9 @@ const Login = props => {
             if (isAuthenticated) {
                 authContext.setUser(user);
                 authContext.setIsAuthenticated(isAuthenticated);
-                return
+                localStorage.setItem("logged", true)
+                localStorage.setItem("user", user)
+
               }
 
         })

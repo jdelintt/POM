@@ -3,7 +3,7 @@ import API from "./../utils/API"
 
 export const AuthContext = createContext()
 
-export default (props) => {
+function Auth (props) {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoaded, setIsLoaded] = useState(true);
@@ -28,3 +28,5 @@ export default (props) => {
     )
 
 }
+
+export default Auth;
