@@ -5,6 +5,7 @@ import {useHistory, Redirect} from "react-router-dom";
 import SeniorImage from '../../utils/SVG/SeniorSVG'
 import "./Login.css";
 
+
 const Login = props => {
     // let  = useHistory();
     const [user, setUser] = useState({ username: "", password: "" })
@@ -32,13 +33,14 @@ const Login = props => {
     return (
         <div class="background">
             <form>
-                <h1 class="pom">POM</h1>
+                <h1 className="pom">Peace of Mind</h1>
                 <SeniorImage></SeniorImage>
-                <h1>Sign In
-                    <br></br>
+                <h1 className="signIn">Sign In</h1>
+                <h1>
                 <label htmlFor="username"> Username: </label>
                     <br></br>
-                <input
+                <input 
+                    className="input"
                     type="text"
                     name="username"
                     onChange={handleInputChange}
@@ -47,19 +49,21 @@ const Login = props => {
                 <label htmlFor="password">   Password: </label>
                     <br></br>
                 <input
+                    className="input"
                     type="password"
                     name="password"
                     onChange={handleInputChange}
                     placeholder="Password"
                 ></input>
                     <br></br>
-                <button onClick = {handleLogin} type = "submit">
+                <button onClick = {handleLogin} type = "submit" className="login">
                     Login
                 </button>
                 </h1>
             </form>
+            <hr class="rounded"></hr>
         </div>
-
+    
     )
 }
 
