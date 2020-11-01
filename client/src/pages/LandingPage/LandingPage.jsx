@@ -7,12 +7,18 @@ import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LandingPage.css';
 
+// import ESign from "./../../components/eSign";
+import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined'
+import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
 
 
 
 
 
-import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
+
+
+
+
 import SeniorImage from '../../utils/SVG/SeniorSVG'
 import PDFCreation from '../Forms/AdvancedDirective'
 import 'antd/dist/antd.css'
@@ -191,7 +197,7 @@ const LandingPage = () => {
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 1</h1> 
-              
+              <EditOutlined style={{width: "100%"}}/>
               <p className="jumboText">
                 Fill out the form below the instructions section.
               </p>
@@ -249,64 +255,43 @@ const LandingPage = () => {
             </Container>
           </Jumbotron>
         </section>
-
+        <br>
+        </br>
+        <br>
+        </br>
+        <br>
+        </br>
       </Row>
+      {/* <Row
+        justify="center"
+        style={{ backgroundColor: "#bfbfbe" }}
+      >
+      </Row> */}
       <Row
         justify="center"
-        style={{ backgroundColor: "#fff1b8" }}
+        style={{ backgroundColor: "#bfbfbe" }}
       >
-
-        {/* <Col
-          span={8}
-        >
-          
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-          >
-            <Meta title="Step One" description="Fill out your medical information in the DNR Document Creator below" />
-          </Card>
-
-        </Col> */}
-        {/* <Col
-          span={8}
-        >
-
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-          >
-            <Meta title="Step Two" description="Click Save and Create to generate a DNR document" />
-          </Card>
-        </Col> */}
-
-
-        {/* <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-        >
-          <Meta title="Step Three" description="Find all your documents in the Medical Document section at the top of the page" />
-        </Card> */}
-
-      </Row>
-      <Row
-        justify="center"
-        style={{ backgroundColor: "#ffd666" }}
-      >
+            <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+              <Row>
+              <Col xs={6}>
+              <h1>
         {/* <Upload {...props}>
           <Button icon={<UploadOutlined />}>Click to Upload</Button>
         </Upload> */}
-        <form >
+        <form className="formStyles">
           <div className="custom-file mb-3">
             <input type="file" onChange={(e) => {
               handleBase64(e)
             }} />
           </div>
-          <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(userData)} />
+          
+          <input type="submit" value="Submit" style={{width: "200px"}} className="btn btn-primary btn-block submitBtn" onClick={() => submitADR(userData)} />
         </form>
+        </h1>
+        </Col>
+        <Col xs={6} >
+        <h1 className="signatureStyles">
         {/* <embed src={PDF.base64} type={PDF.type} /> */}
         {console.log(PDF.type)}
         {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
@@ -315,12 +300,17 @@ const LandingPage = () => {
           buttonText="Patient Signature"
           whosSigning="patientSignature"
         ></ESign>
-
-
+        </h1>
+        </Col>
+        </Row>
+      </Container>
+      </Jumbotron>
+            </Row>
+            <Row>
 
         <Divider>OR FILL OUT FORM HERE</Divider>
 
-
+        
         <Form
           {...layout}
           name="basic"
@@ -354,11 +344,12 @@ const LandingPage = () => {
         </Button>
           </Form.Item>
         </Form>
+        
       </Row>
 
 
       <PDFCreation></PDFCreation>
-
+      
     </>
   )
 };
