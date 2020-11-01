@@ -1,6 +1,10 @@
 .pom {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     font-size: xx-large;
+    padding-top: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
 }
 
 .background {
@@ -8,14 +12,32 @@
     text-align: center;
     top: 50%;
     left: 50%;
-    padding-bottom: fill screen;
+    padding-bottom: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
 }
 
 .signIn {
-    margin-top: 2%;
+    padding-top: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
 }
 
 .input {
-    margin-bottom: 2%;
+    padding-bottom: 2%;
 }
 
+.login {
+    margin-bottom: 6%;
+    margin-top: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
+}
+
+.footerBottom {
+    padding-top: 1%;
+    padding-bottom: 2%; 
+}

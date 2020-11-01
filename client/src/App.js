@@ -5,7 +5,8 @@ import Signup from "./pages/Signup/Signup"
 import PrivateRoute from "./HighOrderComponents/PrivateRoute"
 import UnPrivateRoute from "./HighOrderComponents/UnPrivateRoute"
 import PDF from "./pages/PDFTrial/PDFTrial"
-import ESign from "./components/eSign"
+import ESign from "./components/eSign";
+import Footer from "./components/Footer/Footer";
 
 
 
@@ -13,6 +14,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
+    <div>
     <Router>
       <UnPrivateRoute exact path="/" component={Login} />
       <UnPrivateRoute path="/signup" component={Signup} />
@@ -20,7 +22,8 @@ function App() {
       <PrivateRoute path="/pdf" component={PDF}></PrivateRoute>
 
     </Router>
-
+    <Footer />
+    </div>
   );
 }
 

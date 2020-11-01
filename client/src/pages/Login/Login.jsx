@@ -33,7 +33,7 @@ const Login = props => {
     return (
         <div class="background">
             <form>
-                <h1 className="pom">POM</h1>
+                <h1 className="pom">Peace of Mind</h1>
                 <SeniorImage></SeniorImage>
                 <h1 className="signIn">Sign In</h1>
                 <h1>
@@ -56,15 +56,14 @@ const Login = props => {
                     placeholder="Password"
                 ></input>
                     <br></br>
-                <button onClick = {handleLogin} type = "submit">
+                <button onClick = {handleLogin} type = "submit" className="login">
                     Login
                 </button>
                 </h1>
             </form>
-
-            
+            <hr class="rounded"></hr>
         </div>
-
+    
     )
 }
 
