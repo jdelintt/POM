@@ -6,7 +6,18 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LandingPage.css';
+
 import Header from "../../components/Header/Header.js";
+
+
+// import ESign from "./../../components/eSign";
+import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
+import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
+import SaveOutlined from '../../../node_modules/@ant-design/icons/SaveOutlined';
+import FileDoneOutlined from '../../../node_modules/@ant-design/icons/FileDoneOutlined';
+import InfoCircleOutlined from '../../../node_modules/@ant-design/icons/InfoCircleOutlined';
+import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined';
+import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
 
 
 
@@ -191,17 +202,27 @@ const LandingPage = () => {
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 1</h1> 
-              <EditOutlined style={{width: "100%"}}/>
+              <h1 style={{width: "100%", marginTop: "-3%"}}>
+                <EditOutlined />
+                </h1>
               <p className="jumboText">
-                Fill out the form below the instructions section.
+                Fill out the form below.
               </p>
+              
           </Col>
+          <hr className= "rounded"></hr>
+          <h1>
+            <PDFCreation></PDFCreation>
+            </h1>
             </Container>
           </Jumbotron>
           <Jumbotron style={styles.JumboStyles} fluid="lg">
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 2</h1>
+              <h1 style={{width: "100%", marginTop: "-3%"}}>
+                <InfoCircleOutlined />
+                </h1>
               <p className="jumboText">
                 Make sure every input has your information and if you are confused about what to put in there, click the "?"
               </p>
@@ -212,6 +233,9 @@ const LandingPage = () => {
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 3</h1>
+              <h1 style={{width: "100%", marginTop: "-3%"}}>
+              <FileDoneOutlined />
+              </h1>
               <p className="jumboText">
                 Once all the information has been inputted, click "Create Advanced Directive".
               </p>
@@ -222,6 +246,9 @@ const LandingPage = () => {
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 4</h1>
+              <h1 style={{width: "100%", marginTop: "-3%"}}>
+              <SaveOutlined />
+              </h1>
               <p className="jumboText">
                 The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
               </p>
@@ -232,6 +259,9 @@ const LandingPage = () => {
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 5</h1>
+              <h1 style={{width: "100%", marginTop: "-3%"}}>
+              <UploadOutlined />
+              </h1>
               <p className="jumboText">
                 Click the "upload" button and select the Advanced Directive file that you just saved.
               </p>
@@ -242,6 +272,9 @@ const LandingPage = () => {
             <Container fluid="lg">
           <Col >
               <h1 className="stepHeader">STEP 6</h1>
+              <h1 style={{width: "100%", marginTop: "-3%"}}>
+                <SmileOutlined />
+              </h1>
               <p className="jumboText">
                 Now enjoy your Peace Of Mind!
               </p>

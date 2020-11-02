@@ -5,6 +5,7 @@ import './AdvancedDirective.css'
 import { useRef, useState } from 'react';
 import moment from 'moment';
 import PartOne from './PartOne'
+import Container from 'react-bootstrap/esm/Container';
 
 const ExportPDF = () => {
 
@@ -49,15 +50,18 @@ Click me
                 src="Component.jpg"/>
             </div>
         </Row>
+        <br></br>
+        <br></br>
         <Row
         justify="center"
-        > Maine Health Care Advance Directive Form
+        > 
+        <h1>Maine Health Care Advance Directive Form</h1>
         </Row>
-
+        <Container id="formStyle">
         <Row
         justify="start"
         > 
-
+        <Col md={6}>
             <Form>
                 <Form.Item
                 label="Full Legal Name"
@@ -65,35 +69,31 @@ Click me
                 <Input placeholder="Johnathan Edward Smith" />
                 </Form.Item>
             </Form>
-        </Row>
-        <Row
+            <Form.Item
+                label="Date Of Birth"
+                >
+            <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
+            </Form.Item>
+            
+            </Col>
+            <Col md={6} id="addressColumn">
+        {/* <Row
         justify="start"
-        > 
-            <Col>
-
+        >  */}
             <Form>
-                
                 <Form.Item
                 label="Address (Street)"
                 >
                 <Input placeholder="Ex. 330 W. California Blvd #213 Pasadena, CA 91105" />
                 </Form.Item>
             </Form>
-
-            </Col>
-            <Col>
             <Form>
-
                 <Form.Item
                 label="Address (City)"
                 >
                 <Input placeholder="Ex. 330 W. California Blvd #213 Pasadena, CA 91105" />
                 </Form.Item>
-
             </Form>
-            
-            </Col>
-            <Col>
             <Form>
                  <Form.Item
                 label="Address (State)"
@@ -101,10 +101,6 @@ Click me
                 <Input placeholder="Ex 330 W. California Blvd #213 Pasadena, CA 91105" />
                 </Form.Item>
             </Form>
-           
-            
-            </Col>
-            <Col>
             <Form>
                  <Form.Item
                 label="Address (Zipcode)"
@@ -112,19 +108,15 @@ Click me
                 <Input placeholder="Ex 330 W. California Blvd #213 Pasadena, CA 91105" />
                 </Form.Item>
             </Form>
-           
-            
-            </Col>
-            
-                
-                
-            
-        </Row>
-        <Row>
+            </Col>  
+            </Row>    
+        {/* <Row>
+            <Col>
             Date of Birth
         <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
-        </Row>
-
+        </Col>
+        </Row> */}
+        </Container>
         <Row
         justify="center"
         >
