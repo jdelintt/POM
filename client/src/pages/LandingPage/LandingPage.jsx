@@ -212,10 +212,7 @@ const LandingPage = () => {
               </p>
               
           </Col>
-          <hr className= "rounded"></hr>
-          <h1>
-            <PDFCreation></PDFCreation>
-            </h1>
+          
             </Container>
           </Jumbotron>
           <Jumbotron style={styles.JumboStyles} fluid="lg">
@@ -340,7 +337,7 @@ const LandingPage = () => {
         <Divider>OR FILL OUT FORM HERE</Divider>
 
         
-        <Form
+        {/* <Form
           {...layout}
           name="basic"
           initialValues={{ remember: true }}
@@ -373,7 +370,7 @@ const LandingPage = () => {
         </Button>
           </Form.Item>
         </Form>
-        
+         */}
       </Row>
 
 
