@@ -51,7 +51,8 @@ Click me
         </Row>
         <Row
         justify="center"
-        > Maine Health Care Advance Directive Form
+        > 
+        <h1>Maine Health Care Advance Directive Form</h1>
         </Row>
 
         <Row
@@ -121,8 +122,10 @@ Click me
             
         </Row>
         <Row>
+            <Col>
             Date of Birth
         <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
+        </Col>
         </Row>
 
         <Row
