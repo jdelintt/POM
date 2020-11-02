@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import API from "./../../utils/API";
 import { AuthContext } from './../../context/AuthContext';
 import {useHistory, Redirect} from "react-router-dom";
-import SeniorImage from '../../utils/SVG/SeniorSVG'
+import SeniorImage from '../../utils/SVG/SeniorSVG';
+import '../../utils/SVG/SeniorSVG.css';
 import "./Login.css";
+import Header from "../../components/Header/Header.js";
 
 
 const Login = props => {
@@ -32,9 +34,10 @@ const Login = props => {
 
     return (
         <div class="background">
+            <Header></Header>
             <form>
-                <h1 className="pom">Peace of Mind</h1>
-                <SeniorImage></SeniorImage>
+                {/* <h1 className="pom">POM</h1> */}
+                <SeniorImage className="logo"></SeniorImage>
                 <h1 className="signIn">Sign In</h1>
                 <h1>
                 <label htmlFor="username"> Username: </label>

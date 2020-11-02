@@ -1,8 +1,10 @@
 import React from 'react'
+// import '../SVG/SeniorSVG.css'
 
 const SeniorImage = () => {
  return (
 
+<div className="seniorImage">
 <svg width="450" height="209" viewBox="0 0 450 209" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M338.378 186.351L329.362 195.366L330.423 196.427L339.439 187.411L338.378 186.351Z" fill="#000061"/>
 <path d="M343.481 186.36L334.466 195.375L335.526 196.436L344.542 187.42L343.481 186.36Z" fill="#000061"/>
@@ -206,6 +208,7 @@ const SeniorImage = () => {
 <path d="M143.225 25.85C140.9 25.85 137.525 25.1 136.025 24.2L136.25 23.9C137.9 24.95 142.175 25.775 144.275 25.475L144.35 25.85C144.05 25.85 143.675 25.85 143.225 25.85Z" fill="#D62D51"/>
 <path d="M172.85 138.05H171.125V138.8H172.85V138.05Z" fill="#000061"/>
 </svg>
+</div>
 
 
 
