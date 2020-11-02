@@ -7,6 +7,9 @@ import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LandingPage.css';
 
+import Header from "../../components/Header/Header.js";
+
+
 // import ESign from "./../../components/eSign";
 import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
 import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
@@ -19,14 +22,14 @@ import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox
 
 
 
+// import ESign from "./../../components/eSign";
+import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined'
+import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
 
 
-
-
-
-import SeniorImage from '../../utils/SVG/SeniorSVG'
-import PDFCreation from '../Forms/AdvancedDirective'
-import 'antd/dist/antd.css'
+import SeniorImage from '../../utils/SVG/SeniorSVG';
+import PDFCreation from '../Forms/AdvancedDirective';
+import 'antd/dist/antd.css';
 
 const styles = {
   JumboStyles: {
@@ -159,15 +162,12 @@ const LandingPage = () => {
 
   return (
     <>
-      <section id="parallax-world-of-ugg">
-
-      
+    <Header>
+        
+      </Header>
         <button onClick={handleLogout}>Logout</button>
-
-
-
       
-
+      <section id="parallax-world-of-ugg">
         <section>
           <div className="title">
             <h3>{user.username}</h3>
