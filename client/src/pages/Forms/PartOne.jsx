@@ -7,7 +7,7 @@ const PartOne = () => {
         notification[type]({
           message: 'Notification Title',
           description:
-            'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+            'MPOA-Medical Power of Attorney. This is a friend or family member who could speak on your behalf, should you be unconscious, about what you want for end of life care. This person is someone who knows your choices and can comfortably advocate for them.',
         });
       };
 
@@ -16,7 +16,7 @@ const PartOne = () => {
         <Row>
         <h1>Power of Attorney for Health Care</h1>
         <p>
-        <Button onClick={() => openNotificationWithIcon('info')}>Info</Button>
+        <Button onClick={() => openNotificationWithIcon('info')}>?</Button>
 
         </p>
         </Row>
