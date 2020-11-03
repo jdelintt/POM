@@ -17,8 +17,7 @@ const signToken = userId => {
 }
 
 userRouter.post("/signup", (req, res) => {
-    console.log(req.body)
-    const { firstName, lastName, username, password, role, email } = req.body;
+    const { firstName, lastName, username, password, role, emails } = req.body;
     User.findOne({ username }, (err, user) => {
         if (err) {
             res.status(500).json({ msg: { msgBody: err, msgFlag: true } })
@@ -33,7 +32,7 @@ userRouter.post("/signup", (req, res) => {
                 username,
                 password,
                 role,
-                email,
+                emails,
                 ADirFile: "",
                 ADirFileType: "",
                 signatures: []
@@ -72,8 +71,7 @@ userRouter.get("/user/:user", passport.authenticate("jwt", { session: false }), 
 })
 
 userRouter.put("/ADR/files", (req, res) => {
-    console.log(req.body)
-    const { username, password, firstName, lastName, _id, role, email, ADirFile, ADirFileType, signatures } = req.body
+    const { username, password, firstName, lastName, _id, role, emails, ADirFile, ADirFileType, signatures } = req.body
     User.findOneAndUpdate({ _id: _id }, {
         $set: {
             username,
@@ -82,14 +80,13 @@ userRouter.put("/ADR/files", (req, res) => {
             lastName,
             _id,
             role,
-            email,
+            emails,
             ADirFile,
             ADirFileType,
             signatures
         }
     }, (err, data) => {
         if (err) {
-            console.log("you suck start over")
             throw err
 
         }
@@ -100,68 +97,112 @@ userRouter.put("/ADR/files", (req, res) => {
 })
 
 userRouter.post("/email/send", (req, res) => {
-    console.log(req.body)
+    console.log(req.body.emails)
+
+
 
 
     const output = `
     <p>This is a new Client who needs there medical form faxed over to there doctors</p>
     <h3>Contact Details</h3>
     <ul>  
-      <li>Form number 1: 
+      <li>Advanced Directive Form: 
       </li>
 
     </ul>
 
   `;
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-        user: 'oelucy@gmail.com', // generated ethereal user
-        pass: 'lucybig12'  // generated ethereal password
-    },
-    tls:{
-      rejectUnauthorized:false
+    for (let i = 0; i < req.body.emails.length; i++) {
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: 'pomindservices@gmail.com',
+                pass: 'bNqVr$Wcdu#5'
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
+
+        // setup email data with unicode symbols
+        let mailOptions = {
+            from: '"Peace Of Mind" <pomindservices@gmail.com>', // sender address
+            to: req.body.emails[i], // list of receivers
+            subject: 'Advanced Directive PDF', // Subject line
+            text: 'Advanced Directive', // plain text body
+            html: output,
+            attachments: [
+                {
+                    filename: "AdvancedDirective.pdf",
+                    path: req.body.ADirFile
+                }
+            ]
+        };
+
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+            res.render('contact', { msg: 'Email has been sent' });
+        });
     }
-  });
 
-  // setup email data with unicode symbols
-  let mailOptions = {
-      from: '"Nodemailer Contact" <oelucy@gmail.com>', // sender address
-      to: 'oelucy@gmail.com', // list of receivers
-      subject: 'Node Contact Request', // Subject line
-      text: 'Hello world?', // plain text body
-      html: output,
-      attachments:  [
-          {
-              filename : "AdvancedDirective.pdf",
-              path : req.body.ADirFile
-          }
-      ]
-  };
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: 'pomindservices@gmail.com',
+            pass: 'bNqVr$Wcdu#5'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
 
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          return console.log(error);
-      }
-      console.log('Message sent: %s', info.messageId);   
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"YOU NEED TO FAX THIS RIGHT NOW" <pomindservices@gmail.com>', // sender address
+        to: 'pomindservices@gmail.com', // list of receivers
+        subject: 'FAX THIS NEW CUSTOMER', // Subject line
+        text: 'FAX THIS', // plain text body
+        html: output,
+        attachments: [
+            {
+                filename: "AdvancedDirective.pdf",
+                path: req.body.ADirFile
+            }
+        ]
+    };
 
-      res.render('contact', {msg:'Email has been sent'});
-  });
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+        res.render('contact', { msg: 'Email has been sent' });
+    });
 })
 
 userRouter.post("/sign/trail", (req, res) => {
-    const {trimmedURI, timesStarted, timesEnded, username} = req.body;
+    const { trimmedURI, timesStarted, timesEnded, username } = req.body;
     Sign.create({
         trimmedURI,
         timesStarted,
         timesEnded,
-        whoSigned : timesEnded[0].title,
+        whoSigned: timesEnded[0].title,
         username
     }, (error, info) => {
         if (error) throw error;
