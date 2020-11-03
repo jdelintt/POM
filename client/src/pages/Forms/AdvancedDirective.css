@@ -2,3 +2,18 @@
   height: 100px;
   width: 100px;
 }
+
+#addressColumn {
+  margin-left: 30%;
+}
+
+#formStyle {
+  padding-top: 2%;
+}
+
+.MainDiv {
+  padding-left: 80px;
+  padding-right: 80px;
+  border-right: 50px solid rgb(179, 107, 13);
+  border-left: 50px solid rgb(179, 107, 13);
+}

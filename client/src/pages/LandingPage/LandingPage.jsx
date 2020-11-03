@@ -1,17 +1,47 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
-import ESign from "./../../components/eSign"
-import { useHistory } from 'react-router-dom'
+import ESign from "./../../components/eSign";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
-// import './LandingPage.css';
+import './LandingPage.css';
 
-import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox } from 'antd'
-import SeniorImage from '../../utils/SVG/SeniorSVG'
-import PDFCreation from '../Forms/AdvancedDirective'
-import 'antd/dist/antd.css'
+import Header from "../../components/Header/Header.js";
 
 
+// import ESign from "./../../components/eSign";
+// import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
+// import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
+// import SaveOutlined from '../../../node_modules/@ant-design/icons/SaveOutlined';
+// import FileDoneOutlined from '../../../node_modules/@ant-design/icons/FileDoneOutlined';
+// import InfoCircleOutlined from '../../../node_modules/@ant-design/icons/InfoCircleOutlined';
+// import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined';
+
+import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
+
+
+
+
+
+// import ESign from "./../../components/eSign";
+
+import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
+
+
+import SeniorImage from '../../utils/SVG/SeniorSVG';
+import PDFCreation from '../Forms/AdvancedDirective';
+import 'antd/dist/antd.css';
+
+const styles = {
+  JumboStyles: {
+    width: "80vw",
+    textAlign: "center",
+    margin: "40px",
+    borderRadius: "10px",
+    boxShadow: "12px 12px 16px #708090"
+  }
+}
 
 
 

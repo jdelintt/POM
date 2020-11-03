@@ -1,0 +1,42 @@
+.pom {
+    /* font-family: sans-serif; */
+    font-size: xx-large;
+    padding-top: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+}
+
+.background {
+    background-color: #BFBFBE;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    padding-bottom: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
+}
+
+.signIn {
+    padding-top: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
+}
+
+.input {
+    padding-bottom: 2%;
+}
+
+.login {
+    margin-bottom: 6%;
+    margin-top: 2%;
+    text-shadow: 1px 1px 4px #708090
+
+
+}
+
+.footerBottom {
+    padding-top: 1%;
+    padding-bottom: 2%; 
+}
