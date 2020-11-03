@@ -23,6 +23,9 @@ const signSchema = new Schema({
     username : {
         type : String
 
+    },
+    trimmedURI : {
+        type : String
     }
 
 
