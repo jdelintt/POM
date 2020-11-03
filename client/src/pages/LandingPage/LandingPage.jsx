@@ -4,6 +4,7 @@ import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import {useHistory} from 'react-router-dom'
 
 import './LandingPage.css';
 
@@ -164,144 +165,187 @@ const LandingPage = () => {
       if (user.firstName) {
         return (
           <>
+          <Header>
+              
+            </Header>
+              <button onClick={handleLogout}>Logout</button>
+              <button onClick={handlePDF}>PDF</button>
 
-            <button onClick={handleLogout}>Logout</button>
-            <button onClick={handlePDF}>PDF</button>
-
-
+            
             <section id="parallax-world-of-ugg">
-
+              <section>
+                <div className="title">
+                  <h3>{user.username}</h3>
+                  {/* <h1>{fullName(user)}</h1> */}
+                </div>
+              </section>
             </section>
             <Row
               justify="center"
             >
               <Col span={7}>
                 <SeniorImage></SeniorImage>
-
+      
               </Col>
-
-
-
-
-
+      
+      
+      
+      
+      
             </Row>
-
+      
             <Row
               justify="center"
-              style={{ backgroundColor: "#fff1b8" }}
+              style={{ backgroundColor: "#bfbfbe" }}
             >
               <section id="instructional-part">
                 <div className="ins">
-                  <h1>Instructions</h1>
+                  <h1 id="instructionsHeading">Instructions</h1>
+                  
                 </div>
-
+                  <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                <Col >
+                    <h1 className="stepHeader">STEP 1</h1> 
+                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                      <EditOutlined />
+                      </h1>
+                    <p className="jumboText">
+                      Fill out the form below.
+                    </p>
+                    
+                </Col>
+                
+                  </Container>
+                </Jumbotron>
+                <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                <Col >
+                    <h1 className="stepHeader">STEP 2</h1>
+                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                      <InfoCircleOutlined />
+                      </h1>
+                    <p className="jumboText">
+                      Make sure every input has your information and if you are confused about what to put in there, click the "?"
+                    </p>
+                </Col>
+                  </Container>
+                </Jumbotron>
+                <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                <Col >
+                    <h1 className="stepHeader">STEP 3</h1>
+                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <FileDoneOutlined />
+                    </h1>
+                    <p className="jumboText">
+                      Once all the information has been inputted, click "Create Advanced Directive".
+                    </p>
+                </Col>
+                  </Container>
+                </Jumbotron>
+                <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                <Col >
+                    <h1 className="stepHeader">STEP 4</h1>
+                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <SaveOutlined />
+                    </h1>
+                    <p className="jumboText">
+                      The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
+                    </p>
+                </Col>
+                  </Container>
+                </Jumbotron>
+                <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                <Col >
+                    <h1 className="stepHeader">STEP 5</h1>
+                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <UploadOutlined />
+                    </h1>
+                    <p className="jumboText">
+                      Click the "upload" button and select the Advanced Directive file that you just saved.
+                    </p>
+                </Col>
+                  </Container>
+                </Jumbotron>
+                <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                <Col >
+                    <h1 className="stepHeader">STEP 6</h1>
+                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                      <SmileOutlined />
+                    </h1>
+                    <p className="jumboText">
+                      Now enjoy your Peace Of Mind!
+                    </p>
+                </Col>
+                  </Container>
+                </Jumbotron>
               </section>
-
+              <br>
+              </br>
+              <br>
+              </br>
+              <br>
+              </br>
             </Row>
+            {/* <Row
+              justify="center"
+              style={{ backgroundColor: "#bfbfbe" }}
+            >
+            </Row> */}
             <Row
               justify="center"
-              style={{ backgroundColor: "#fff1b8" }}
+              style={{ backgroundColor: "#bfbfbe" }}
             >
-
-              <Col
-                span={8}
-              >
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-                >
-                  <Meta title="Step One" description="Fill out your medical information in the DNR Document Creator below" />
-                </Card>
-
-              </Col>
-              <Col
-                span={8}
-              >
-
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-                >
-                  <Meta title="Step Two" description="Click Save and Create to generate a DNR document" />
-                </Card>
-              </Col>
-
-
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-              >
-                <Meta title="Step Three" description="Find all your documents in the Medical Document section at the top of the page" />
-              </Card>
-
-            </Row>
-            <Row
-              justify="center"
-              style={{ backgroundColor: "#ffd666" }}
-            >
-
-              <form >
+                  <Jumbotron style={styles.JumboStyles} fluid="lg">
+                  <Container fluid="lg">
+                    <Row>
+                    <Col xs={6}>
+                    <h1>
+              {/* <Upload {...props}>
+                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+              </Upload> */}
+              <form className="formStyles">
                 <div className="custom-file mb-3">
                   <input type="file" onChange={(e) => {
                     handleBase64(e)
                   }} />
                 </div>
-                <input type="submit" value="Submit" className="btn btn-primary btn-block" onClick={() => submitADR(user)} />
+                
+                <input type="submit" value="Submit" style={{width: "200px"}} className="btn btn-primary btn-block submitBtn" onClick={() => submitADR(user)} />
               </form>
+              </h1>
+              </Col>
+              <Col xs={6} >
+              <h1 className="signatureStyles">
+              {/* <embed src={PDF.base64} type={PDF.type} /> */}
               {console.log(PDF.type)}
               {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
-
+      
               <ESign
                 buttonText="Patient Signature"
                 whosSigning="patientSignature"
               ></ESign>
-
-
-
+              </h1>
+              </Col>
+              </Row>
+            </Container>
+            </Jumbotron>
+                  </Row>
+                  <Row>
+      
               <Divider>OR FILL OUT FORM HERE</Divider>
-
-
-              <Form
-                {...layout}
-                name="basic"
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-              >
-                <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={[{ required: true, message: 'Please input your username!' }]}
-                >
-                  <Input />
-                </Form.Item>
-
-                <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[{ required: true, message: 'Please input your password!' }]}
-                >
-                  <Input.Password />
-                </Form.Item>
-
-                <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
-                <Form.Item {...tailLayout}>
-                  <Button type="primary" htmlType="submit">
-                    Submit
-              </Button>
-                </Form.Item>
-              </Form>
+      
+              
+              
             </Row>
-
-
+      
+      
             <PDFCreation></PDFCreation>
-
+            
           </>
         )
       }
