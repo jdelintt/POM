@@ -9,15 +9,8 @@ import { AuthContext } from "./../context/AuthContext";
 
 function ESign(props) {
 
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
 
-    useEffect(() => {
-        if (user.username) {
-            API.getUser(user.username)
-                .then(res => setUserData(res))
-        }
-
-    }, [user])
 
 
     const [signature, setSignature] = useState({
@@ -28,16 +21,15 @@ function ESign(props) {
 
     })
 
-    const [userData, setUserData] = useState({})
 
     useEffect(() => {
 
-        if (userData.firstName) {
-            API.userUpdate(userData)
-            .then(res => console.log(res))
+        if (user.firstName) {
+            API.userUpdate(user)
+                .then(res => console.log(res))
         }
 
-    }, [userData])
+    }, [user])
 
 
     let sigPad = useRef(null);
@@ -46,7 +38,7 @@ function ESign(props) {
         pad: {
             width: "500px",
             justifycontent: "center",
-            minheight: "500px",
+            minheight: "200px",
             border: "1px solid black"
 
         }
@@ -57,7 +49,7 @@ function ESign(props) {
             .then(res => {
                 console.log(res)
             })
-        setUserData({ ...userData, signatures: [...userData.signatures, { title: signature.timesStarted[0].title, signature: signature.trimmedURI }] })
+        setUser({ ...user, signatures: [...user.signatures, { title: signature.timesStarted[0].title, signature: signature.trimmedURI }] })
 
 
 

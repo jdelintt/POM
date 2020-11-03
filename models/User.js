@@ -22,9 +22,6 @@ const userSchema = new Schema({
         min: 6
 
     },
-    email: {
-        type: String,
-      },
     role : {
         type : String,
         required : true
@@ -40,6 +37,9 @@ const userSchema = new Schema({
     signatures : {
         type : Array
 
+    },
+    emails : {
+        type : Array
     }
 
 })
