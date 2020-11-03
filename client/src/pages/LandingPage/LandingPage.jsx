@@ -4,26 +4,28 @@ import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './LandingPage.css';
 
 import Header from "../../components/Header/Header.js";
 
 
 // import ESign from "./../../components/eSign";
-import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
-import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
-import SaveOutlined from '../../../node_modules/@ant-design/icons/SaveOutlined';
-import FileDoneOutlined from '../../../node_modules/@ant-design/icons/FileDoneOutlined';
-import InfoCircleOutlined from '../../../node_modules/@ant-design/icons/InfoCircleOutlined';
-import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined';
-import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
+// import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
+// import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
+// import SaveOutlined from '../../../node_modules/@ant-design/icons/SaveOutlined';
+// import FileDoneOutlined from '../../../node_modules/@ant-design/icons/FileDoneOutlined';
+// import InfoCircleOutlined from '../../../node_modules/@ant-design/icons/InfoCircleOutlined';
+// import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined';
+
+import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
+
 
 
 
 
 // import ESign from "./../../components/eSign";
-import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined'
+
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
 
 
@@ -335,40 +337,7 @@ const LandingPage = () => {
         <Divider>OR FILL OUT FORM HERE</Divider>
 
         
-        {/* <Form
-          {...layout}
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-        </Button>
-          </Form.Item>
-        </Form>
-         */}
+        
       </Row>
 
 

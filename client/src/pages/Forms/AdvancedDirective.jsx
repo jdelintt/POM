@@ -5,6 +5,10 @@ import './AdvancedDirective.css'
 import { useRef, useState } from 'react';
 import moment from 'moment';
 import PartOne from './PartOne'
+import PartTwo from './PartTwo'
+import PartThree from './PartThree'
+import PartFour from './PartFour'
+import PartFive from './PartFive'
 import Container from 'react-bootstrap/esm/Container';
 
 const ExportPDF = () => {
@@ -25,12 +29,10 @@ const ExportPDF = () => {
     return(
 
 
-<>
-    <Button
-    onClick={onButtonClick}
-    >
-Click me
-    </Button>
+<div
+className="MainDiv"
+>
+    
     <PDFExport ref={inputEl} paperSize="A4">
         <Row
         justify="center"
@@ -152,9 +154,18 @@ Click me
         <PartOne>
 
         </PartOne>
+        <PartTwo></PartTwo>
+        <PartThree></PartThree>
+        <PartFour></PartFour>
+        <PartFive></PartFive>
+        <Button
+    onClick={onButtonClick}
+    >
+PDF Creation
+    </Button>
             </PDFExport>
 
-</>
+</div>
         
     )
     }

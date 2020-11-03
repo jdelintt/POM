@@ -8,6 +8,7 @@ import PDF from "./pages/PDFTrial/PDFTrial"
 import ESign from "./components/eSign";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
