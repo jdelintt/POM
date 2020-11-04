@@ -33,15 +33,17 @@ const ExportPDF = () => {
 className="MainDiv"
 >
     
-    <PDFExport ref={inputEl} paperSize="A4">
+    <PDFExport ref={inputEl} paperSize="auto">
         <Row
         justify="center"
+        
         >
           <h1>
             P.O.M. Advanced Directive
         </h1>  
         </Row>
             <Row
+                style={{height: 220}}
                 justify="center"
             >   
             <div>
@@ -60,13 +62,31 @@ className="MainDiv"
         <h1>Maine Health Care Advance Directive Form</h1>
         </Row>
         <Container id="formStyle">
+            <Row
+            justify="center"
+            >
+                <h1>
+                    Personal Information
+                </h1>
+            </Row>
         <Row
         justify="start"
+        style={{ marginTop: 70 }}
         > 
         <Col md={6}>
             <Form>
                 <Form.Item
-                label="Full Legal Name"
+                label="First Name"
+                >
+                <Input placeholder="Johnathan Edward Smith" />
+                </Form.Item>
+                <Form.Item
+                label="Middle Name"
+                >
+                <Input placeholder="Johnathan Edward Smith" />
+                </Form.Item>
+                <Form.Item
+                label="Last Name"
                 >
                 <Input placeholder="Johnathan Edward Smith" />
                 </Form.Item>
@@ -112,43 +132,89 @@ className="MainDiv"
             </Form>
             </Col>  
             </Row>    
-        {/* <Row>
-            <Col>
-            Date of Birth
-        <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
-        </Col>
-        </Row> */}
+        
         </Container>
         <Row
+        style={{ marginTop: 70 }}
         justify="center"
         >
             <p>This is a list of all the poeple that have a copy of my signed healthcare directive</p>
         </Row>
-        <Row gutter={[16, 48]}>
-            <Col offset={1}>
-            <Input>
-            </Input>
+        <Row gutter={[16, 48]}
+        style={{ marginBottom: 70 }}
+        
+        >
+            <Col>
+            <Form>
+                 <Form.Item
+                label="First Name"
+                >
+                <Input placeholder="Fred" />
+                </Form.Item>
+                <Form.Item
+                label="Last Name"
+                >
+                <Input placeholder="Jimenez" />
+                </Form.Item>
+                <Form.Item
+                label="Phone Number"
+                >
+                <Input placeholder="(590) 789-6777" />
+                </Form.Item>
+                <Form.Item
+                label="Email"
+                >
+                <Input placeholder="jjimenez@gmail.com" />
+                </Form.Item>
+            </Form>
             </Col>
             <Col>
-            <Input>
-            </Input>
-            </Col>
-            <Col offset={1}>
-            <Input>
-            </Input>
-            </Col>
-            <Col offset={1}>
-            <Input>
-            </Input>
+            <Form>
+                 <Form.Item
+                label="First Name"
+                >
+                <Input placeholder="Fred" />
+                </Form.Item>
+                <Form.Item
+                label="Last Name"
+                >
+                <Input placeholder="Jimenez" />
+                </Form.Item>
+                <Form.Item
+                label="Phone Number"
+                >
+                <Input placeholder="(590) 789-6777" />
+                </Form.Item>
+                <Form.Item
+                label="Email"
+                >
+                <Input placeholder="jjimenez@gmail.com" />
+                </Form.Item>
+            </Form>
             </Col>
             <Col>
-            <Input>
-            </Input>
-            </Col>
-            <Col offset={1}
-            >
-            <Input>
-            </Input>
+            <Form>
+                 <Form.Item
+                label="First Name"
+                >
+                <Input placeholder="Fred" />
+                </Form.Item>
+                <Form.Item
+                label="Last Name"
+                >
+                <Input placeholder="Jimenez" />
+                </Form.Item>
+                <Form.Item
+                label="Phone Number"
+                >
+                <Input placeholder="(590) 789-6777" />
+                </Form.Item>
+                <Form.Item
+                label="Email"
+                >
+                <Input placeholder="jjimenez@gmail.com" />
+                </Form.Item>
+            </Form>
             </Col>
         </Row>
         <PartOne>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
-import ESign from "./../../components/eSign";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import './LandingPage.css';
@@ -146,6 +145,191 @@ const LandingPage = () => {
   }
 
 
+
+
+
+            
+//             <section id="parallax-world-of-ugg">
+//               <section>
+//                 <div className="title">
+//                   <h1 style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</h1>
+//                   <h1 style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</h1>
+//                   {/* <h1>{fullName(user)}</h1> */}
+//                 </div>
+//               </section>
+//             </section>
+//             <Row
+//               justify="center" style={{backgroundColor: "#73A481"}}
+//             >
+//               <Col span={7}>
+//                 <SeniorImage></SeniorImage>
+      
+//               </Col>
+      
+//             </Row>
+      
+//             <Row
+//               justify="center"
+//               style={{ backgroundColor: "#99cc99" }}
+//             >
+//               <section id="instructional-part">
+//                 <div className="ins">
+//                   <h1 id="instructionsHeading">Instructions</h1>
+                  
+//                 </div>
+//                   <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                 <Col >
+//                     <h1 className="stepHeader">STEP 1</h1> 
+//                     <h1 style={{width: "100%", marginTop: "-2%"}}>
+//                       <EditOutlined />
+//                       </h1>
+//                     <p className="jumboText">
+//                       Fill out the form below in the "Document Creation" section
+//                     </p>
+                    
+//                 </Col>
+                
+//                   </Container>
+//                 </Jumbotron>
+//                 <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                 <Col >
+//                     <h1 className="stepHeader">STEP 2</h1>
+//                     <h1 style={{width: "100%", marginTop: "-2%"}}>
+//                       <InfoCircleOutlined />
+//                       </h1>
+//                     <p className="jumboText">
+//                       Make sure every input has your information and if you are confused about what to put in there, click the "?"
+//                     </p>
+//                 </Col>
+//                   </Container>
+//                 </Jumbotron>
+//                 <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                 <Col >
+//                     <h1 className="stepHeader">STEP 3</h1>
+//                     <h1 style={{width: "100%", marginTop: "-2%"}}>
+//                     <FileDoneOutlined />
+//                     </h1>
+//                     <p className="jumboText">
+//                       Once all the information has been inputted, click "Create Advanced Directive".
+//                     </p>
+//                 </Col>
+//                   </Container>
+//                 </Jumbotron>
+//                 <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                 <Col >
+//                     <h1 className="stepHeader">STEP 4</h1>
+//                     <h1 style={{width: "100%", marginTop: "-2%"}}>
+//                     <SaveOutlined />
+//                     </h1>
+//                     <p className="jumboText">
+//                       The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
+//                     </p>
+//                 </Col>
+//                   </Container>
+//                 </Jumbotron>
+//                 <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                 <Col >
+//                     <h1 className="stepHeader">STEP 5</h1>
+//                     <h1 style={{width: "100%", marginTop: "-2%"}}>
+//                     <UploadOutlined />
+//                     </h1>
+//                     <p className="jumboText">
+//                       Click the "upload" button and select the Advanced Directive file that you just saved.
+//                     </p>
+//                 </Col>
+//                   </Container>
+//                 </Jumbotron>
+//                 <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                 <Col >
+//                     <h1 className="stepHeader">STEP 6</h1>
+//                     <h1 style={{width: "100%", marginTop: "-2%"}}>
+//                       <SmileOutlined />
+//                     </h1>
+//                     <p className="jumboText">
+//                       Now enjoy your Peace Of Mind!
+//                     </p>
+//                 </Col>
+//                   </Container>
+//                 </Jumbotron>
+//               </section>
+//               <br>
+//               </br>
+//               <br>
+//               </br>
+//               <br>
+//               </br>
+//             </Row>
+//             {/* <Row
+//               justify="center"
+//               style={{ backgroundColor: "#bfbfbe" }}
+//             >
+//             </Row> */}
+//             <Row
+//               justify="center"
+//               style={{ backgroundColor: "#99cc99" }}
+//             >
+//                   <Jumbotron style={styles.JumboStyles} fluid="lg">
+//                   <Container fluid="lg">
+//                     <Row>
+//                     <Col xs={6}>
+//                     <h1>
+//               {/* <Upload {...props}>
+//                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
+//               </Upload> */}
+//               <form className="formStyles">
+//                 <div className="custom-file mb-3">
+//                   <input type="file" onChange={(e) => {
+//                     handleBase64(e)
+//                   }} />
+//                 </div>
+                
+//                 <input type="submit" value="Submit" style={{width: "200px"}} className="btn btn-primary btn-block submitBtn" onClick={() => submitADR(user)} />
+//               </form>
+//               </h1>
+//               </Col>
+//               <Col xs={6} >
+//               <h1 className="signatureStyles">
+//               {/* <embed src={PDF.base64} type={PDF.type} /> */}
+//               {console.log(PDF.type)}
+//               {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
+      
+              
+//               </h1>
+//               </Col>
+//               </Row>
+//             </Container>
+//             </Jumbotron>
+//                   </Row>
+//                   <Row
+//                   justify="space-around"
+                 
+//                   align="bottom"
+//                   >
+      
+//               <Divider>Document Creation Section</Divider>
+      
+              
+              
+//             </Row>
+      
+//                   <Row>
+//                     <PDFCreation></PDFCreation>
+
+
+//                   </Row>
+            
+            
+//           </>
+//         )
+//       }
+//     }
+//   }
 
 
 
