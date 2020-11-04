@@ -108,31 +108,31 @@
   font-size: 30px;
   text-shadow: 1px 1px 2.5px #708090;
 }
- #instructionsHeading {
-   text-align: center;
-   margin-top: 40px;
-   font-size: 65px;
-   text-shadow: 1px 1px 4px #708090;
- }
+#instructionsHeading {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 65px;
+  text-shadow: 1px 1px 4px #708090;
+}
 
- /* FORM AND JUMBOTRON STYLES */
- .submitBtn {
-   justify-content: center!important;
-   font-size: 40px;
-   width: 230px;
-   margin-left: 15%;
- }
+/* FORM AND JUMBOTRON STYLES */
+.submitBtn {
+  justify-content: center !important;
+  font-size: 40px;
+  width: 230px;
+  margin-left: 15%;
+}
 
- .formStyles {
-   margin-top: 15%;
- }
+.formStyles {
+  margin-top: 15%;
+}
 
- .signatureStyles {
-   margin-left: 250%;
- }
+.signatureStyles {
+  margin-left: 250%;
+}
 
- .iconStyle {
-  width: 100%; 
+.iconStyle {
+  width: 100%;
   margin-top: 5%;
   box-shadow: "12px 12px 16px #708090";
 }
@@ -141,23 +141,12 @@
   font-family: "Martel", serif;
 }
 
-<<<<<<< HEAD
 .jumbotron {
   background-color: #f1f1f1;
 }
+
 .dividerStyle {
   text-shadow: 1px 1px 4px #708090;
   background-color: #73a481;
   padding-top: 1%;
 }
-=======
- .jumbotron {
-   background-color: #f1f1f1;
- }
-
- .dividerStyle {
-  text-shadow: 1px 1px 4px #708090;
-  background-color: #73A481;
-  padding-top: 1%;
- }
->>>>>>> 777f1a4752bdba58496c6b4270aaf88ff5760133
