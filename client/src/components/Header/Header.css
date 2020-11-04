@@ -1,22 +1,22 @@
-.mainHeader{
-    background-color: #878785;
-    text-shadow: 1px 1px 2px #708090;
-    padding-top: 2%;
-    position: sticky;
-    display: block;
-    position: -webkit-sticky;
-    overflow: hidden;
-    border-bottom: 20px black;
-    /* flood-opacity: inherit; */
-    top: 0;
-}
-.glass { z-index: 1; }
+.mainHeader {
+  background-color: #878785;
+  text-shadow: 1px 1px 2px #708090;
+  padding-top: 2%;
+  position: sticky;
 
-.logOut {
+  border-bottom: 20px black;
+  /* flood-opacity: inherit; */
+  top: 0;
+}
+.glass {
+  z-index: 1;
+}
+
+/* .logOut {
     margin-bottom: 10%;
     margin-right: 25%;
 }
 
 .POM {
-    margin-left: 10%;
-}
+    /* margin-left: 10%; */
+/* } */
