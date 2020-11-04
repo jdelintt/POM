@@ -4,20 +4,8 @@ import { AuthContext } from "./../../context/AuthContext";
 import ESign from "./../../components/eSign";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-
 import './LandingPage.css';
-
 import Header from "../../components/Header/Header.js";
-
-
-// import ESign from "./../../components/eSign";
-// import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
-// import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
-// import SaveOutlined from '../../../node_modules/@ant-design/icons/SaveOutlined';
-// import FileDoneOutlined from '../../../node_modules/@ant-design/icons/FileDoneOutlined';
-// import InfoCircleOutlined from '../../../node_modules/@ant-design/icons/InfoCircleOutlined';
-// import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined';
-
 import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
 
 
@@ -334,17 +322,23 @@ const LandingPage = () => {
       </Container>
       </Jumbotron>
             </Row>
-            <Row>
-
-        <Divider>OR FILL OUT FORM HERE</Divider>
-
-        
+            <Row
+            justify="center" className="dividerStyle">
+          
+        <Divider>
+          <h1>OR FILL OUT FORM HERE</h1>
+          </Divider>
         
       </Row>
-
-
+      <Row 
+      justify="center"
+        style={{ backgroundColor: "#99CC99" }}>
+      <Jumbotron style={styles.JumboStyles} fluid="lg">
+      <Container fluid="lg">
       <PDFCreation></PDFCreation>
-      
+      </Container>
+      </Jumbotron>
+      </Row>
     </>
   )
 };
