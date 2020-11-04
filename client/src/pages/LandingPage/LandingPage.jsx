@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import {useHistory} from 'react-router-dom'
 
+
 import './LandingPage.css';
 
 import Header from "../../components/Header/Header.js";
@@ -168,21 +169,36 @@ const LandingPage = () => {
           <Header>
               
             </Header>
+
+            <Row
+            style={{backgroundColor: "#99CC99"}}
+            >
               <button onClick={handleLogout}>Logout</button>
               <button onClick={handlePDF}>PDF</button>
+            </Row>
+              
 
-            
-            <section id="parallax-world-of-ugg">
-              <section>
-                <div className="title">
-                  <h1 style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</h1>
-                  <h1 style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</h1>
-                  {/* <h1>{fullName(user)}</h1> */}
-                </div>
-              </section>
-            </section>
             <Row
-              justify="center" style={{backgroundColor: "#73A481"}}
+            style={{backgroundColor: "#99CC99"}}
+            justify='center'
+            >
+
+            <Col>
+            Welcome {user.username}
+            </Col>
+
+              
+                  {/* <p style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</p>
+                  <p style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</p> */}
+                  
+                
+              
+            
+
+            </Row>
+            
+            <Row
+              justify="center" style={{backgroundColor: "#99CC99"}}
             >
               <Col span={7}>
                 <SeniorImage></SeniorImage>
@@ -337,6 +353,7 @@ const LandingPage = () => {
                   justify="space-around"
                  
                   align="bottom"
+                  className="dividerStyle"
                   >
       
               <Divider>Document Creation Section</Divider>
