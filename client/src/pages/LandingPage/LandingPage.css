@@ -93,6 +93,9 @@
   padding: 60px;
   margin: 0 auto;
   text-align: center;
+  font-family: 'Martel', serif;
+  text-shadow: 1px 1px 3px #708090
+
 }
 #parallax-world-of-ugg .title h1 {
   font-size: 35px;

@@ -176,13 +176,14 @@ const LandingPage = () => {
             <section id="parallax-world-of-ugg">
               <section>
                 <div className="title">
-                  <h3>{user.username}</h3>
+                  <h1 style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</h1>
+                  <h1 style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</h1>
                   {/* <h1>{fullName(user)}</h1> */}
                 </div>
               </section>
             </section>
             <Row
-              justify="center"
+              justify="center" style={{backgroundColor: "#73A481"}}
             >
               <Col span={7}>
                 <SeniorImage></SeniorImage>
@@ -197,7 +198,7 @@ const LandingPage = () => {
       
             <Row
               justify="center"
-              style={{ backgroundColor: "#bfbfbe" }}
+              style={{ backgroundColor: "#99cc99" }}
             >
               <section id="instructional-part">
                 <div className="ins">
@@ -208,7 +209,7 @@ const LandingPage = () => {
                   <Container fluid="lg">
                 <Col >
                     <h1 className="stepHeader">STEP 1</h1> 
-                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <h1 style={{width: "100%", marginTop: "-2%"}}>
                       <EditOutlined />
                       </h1>
                     <p className="jumboText">
@@ -223,7 +224,7 @@ const LandingPage = () => {
                   <Container fluid="lg">
                 <Col >
                     <h1 className="stepHeader">STEP 2</h1>
-                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <h1 style={{width: "100%", marginTop: "-2%"}}>
                       <InfoCircleOutlined />
                       </h1>
                     <p className="jumboText">
@@ -236,7 +237,7 @@ const LandingPage = () => {
                   <Container fluid="lg">
                 <Col >
                     <h1 className="stepHeader">STEP 3</h1>
-                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <h1 style={{width: "100%", marginTop: "-2%"}}>
                     <FileDoneOutlined />
                     </h1>
                     <p className="jumboText">
@@ -249,7 +250,7 @@ const LandingPage = () => {
                   <Container fluid="lg">
                 <Col >
                     <h1 className="stepHeader">STEP 4</h1>
-                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <h1 style={{width: "100%", marginTop: "-2%"}}>
                     <SaveOutlined />
                     </h1>
                     <p className="jumboText">
@@ -262,7 +263,7 @@ const LandingPage = () => {
                   <Container fluid="lg">
                 <Col >
                     <h1 className="stepHeader">STEP 5</h1>
-                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <h1 style={{width: "100%", marginTop: "-2%"}}>
                     <UploadOutlined />
                     </h1>
                     <p className="jumboText">
@@ -275,7 +276,7 @@ const LandingPage = () => {
                   <Container fluid="lg">
                 <Col >
                     <h1 className="stepHeader">STEP 6</h1>
-                    <h1 style={{width: "100%", marginTop: "-3%"}}>
+                    <h1 style={{width: "100%", marginTop: "-2%"}}>
                       <SmileOutlined />
                     </h1>
                     <p className="jumboText">
@@ -299,7 +300,7 @@ const LandingPage = () => {
             </Row> */}
             <Row
               justify="center"
-              style={{ backgroundColor: "#bfbfbe" }}
+              style={{ backgroundColor: "#99cc99" }}
             >
                   <Jumbotron style={styles.JumboStyles} fluid="lg">
                   <Container fluid="lg">
