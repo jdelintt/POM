@@ -3,12 +3,6 @@ import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-<<<<<<< HEAD
-import {useHistory} from 'react-router-dom'
-
-
-=======
->>>>>>> 777f1a4752bdba58496c6b4270aaf88ff5760133
 import './LandingPage.css';
 import Header from "../../components/Header/Header.js";
 import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
@@ -164,7 +158,8 @@ const LandingPage = () => {
     <Header>
         
       </Header>
-        {/* <button onClick={handleLogout}>Logout</button> */}
+        <button onClick={handleLogout}>Logout</button>
+        <button onClick={setPDF}>PDF</button>
       
       <section id="parallax-world-of-ugg" >
         <section >
