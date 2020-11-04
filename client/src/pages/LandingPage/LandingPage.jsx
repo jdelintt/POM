@@ -1,10 +1,11 @@
+import  "../../components/Header/Header.css";
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import './LandingPage.css';
-import Header from "../../components/Header/Header.js";
+import Header from "../../components/Header/Header";
 import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
 import SeniorImage from '../../utils/SVG/SeniorSVG';
@@ -155,14 +156,17 @@ const LandingPage = () => {
 
   return (
     <>
-    <Header>
-        
-      </Header>
-        <button onClick={handleLogout}>Logout</button>
-        
-        
+      <Header sticky="top">
+          <ul>
+            <li>
+          <button onClick={handleLogout}>Logout</button>
+            </li>
+          </ul>
+        </Header>
+       
+              
       
-      
+
       <section id="parallax-world-of-ugg" >
         <section >
           <div className="title">
