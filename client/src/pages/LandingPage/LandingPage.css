@@ -149,7 +149,7 @@
    text-shadow: 1px 1px 4px #708090;
  }
 
- /* FORM JUMBOTRON */
+ /* FORM AND JUMBOTRON STYLES */
  .submitBtn {
    justify-content: center!important;
    font-size: 40px;
@@ -177,4 +177,10 @@
 
  .jumbotron {
    background-color: #f1f1f1;
+ }
+
+ .dividerStyle {
+  text-shadow: 1px 1px 4px #708090;
+  background-color: #73A481;
+  padding-top: 1%;
  }
