@@ -1,5 +1,6 @@
 import React from 'react'
 import {notification, Button, Row, Col, Divider, Form, Input, Radio, Checkbox} from 'antd'
+import ESign from '../../components/eSign'
 
 
 
@@ -32,9 +33,22 @@ const PartFive = () => {
         </Form>
         </Row>
         <Row>
+            <Col
+            span={12}
+            >
             <p>
-                Sign Here
+                Sign Here to the right by clicking the button
             </p>
+            </Col>
+            <Col 
+            span={12}
+            >
+             <ESign
+                buttonText="Patient Signature"
+                whosSigning="patientSignature"
+              ></ESign>
+            </Col>
+           
         </Row>
 </>
     )

@@ -16,13 +16,7 @@ const PartOne = () => {
             'MPOA-Medical Power of Attorney. This is a friend or family member who could speak on your behalf, should you be unconscious, about what you want for end of life care. This person is someone who knows your choices and can comfortably advocate for them.',
         });
       };
-      const openNotification = type => {
-        notification[type]({
-          message: 'Why do I need to fill in an alternate Medical Power of Attorney?',
-          description:
-            'If the Medical Power of Attorney I have named above is not willing or able to make decisions for me then you are saying this person can act as the Medical Power of Attorney',
-        });
-      };
+      
 
       const changeRadio = e => {
         console.log('radio checked', e.target.value);
@@ -43,8 +37,19 @@ const PartOne = () => {
             'A guardian is a person chosen by the court to make decisions about personal care. The decisions can include not only health care but other decisions as well. Check the box below to nominate your agent or guardian',
         });
       };
-      
 
+      const openNotification = placement => {
+        notification.warning({
+          message: `What is a Medical Power of Attorney`,
+          description:
+            'This is a friend or family member who could speak on your behalf, should you be unconscious, about what you want for end of life care. This person is someone who knows your choices and can comfortably advocate for them.',
+          placement,
+        });
+      };
+
+      
+      
+      
 
     return(
         <>
@@ -65,7 +70,10 @@ const PartOne = () => {
         justify='center'
         gutter={[16, 48]}
         >
-        <Button onClick={() => openNotificationWithIcon('info')}>?</Button>
+        <Button onClick={() => openNotification('bottomRight')}>
+        
+        ?
+      </Button>
         </Row>
     
             
@@ -258,7 +266,7 @@ const PartOne = () => {
             justify="center"
             >
 
-             <Button onClick={() => openNotification('info')}>?</Button>   
+             
             </Row>
             
             <MPOAInfo>

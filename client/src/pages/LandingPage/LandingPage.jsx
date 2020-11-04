@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
-import ESign from "./../../components/eSign";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import {useHistory} from 'react-router-dom'
@@ -213,7 +212,7 @@ const LandingPage = () => {
                       <EditOutlined />
                       </h1>
                     <p className="jumboText">
-                      Fill out the form below.
+                      Fill out the form below in the "Document Creation" section
                     </p>
                     
                 </Col>
@@ -327,26 +326,31 @@ const LandingPage = () => {
               {console.log(PDF.type)}
               {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
       
-              <ESign
-                buttonText="Patient Signature"
-                whosSigning="patientSignature"
-              ></ESign>
+              
               </h1>
               </Col>
               </Row>
             </Container>
             </Jumbotron>
                   </Row>
-                  <Row>
+                  <Row
+                  justify="space-around"
+                 
+                  align="bottom"
+                  >
       
-              <Divider>OR FILL OUT FORM HERE</Divider>
+              <Divider>Document Creation Section</Divider>
       
               
               
             </Row>
       
-      
-            <PDFCreation></PDFCreation>
+                  <Row>
+                    <PDFCreation></PDFCreation>
+
+
+                  </Row>
+            
             
           </>
         )

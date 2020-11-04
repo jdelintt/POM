@@ -1,8 +1,18 @@
 import React from 'react'
 import {Button, Row, Col, Divider, Form, Input, notification} from 'antd'
 
+
+
 const MPOAInfo = () => {
 
+    const openNotificationMPOA = placement => {
+        notification.warning({
+          message: "Why do I need to fill in an alternate Medical Power of Attorney?",
+          description:
+            'If the Medical Power of Attorney I have named above is not willing or able to make decisions for me then you are saying this person can act as the Medical Power of Attorney.',
+          placement,
+        });
+      };
 
 return (
     <>
@@ -12,7 +22,7 @@ return (
                     <Col>
                     Alternate Medical Power of Attorney
                     
-                    
+                    <Button onClick={() => openNotificationMPOA('bottomRight')}>?</Button>
                     </Col>
                 </Row>
             </Divider>
