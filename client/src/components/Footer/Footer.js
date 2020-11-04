@@ -31,7 +31,6 @@ function Footer() {
                                 <li>Instagram</li>
                                 <li>Twitter</li>
                                 <li>Linkedin</li>
-                                <li>Tik-Tok</li>
                             </ul>
                         </div>
                         <div className="col-md-3 col-sm-6">
