@@ -9,7 +9,7 @@ import Header from "../../components/Header/Header.js";
 
 
 const Login = props => {
-    // let  = useHistory();
+    let history = useHistory();
     const [user, setUser] = useState({ username: "", password: "" })
     const authContext = useContext(AuthContext);
 
@@ -32,6 +32,13 @@ const Login = props => {
                 return
                 }
         })
+    }
+
+    const handleSignup = (event) => {
+        event.preventDefault()
+        history.push("/signup")
+
+
     }
 
     return (
@@ -63,6 +70,9 @@ const Login = props => {
                     <br></br>
                 <button onClick = {handleLogin} type = "submit" className="login">
                     Login
+                </button>
+                <button onClick = {handleSignup} type = "submit" className="login">
+                    Signup
                 </button>
                 </h1>
             </form>

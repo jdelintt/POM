@@ -18,7 +18,9 @@ return (
     <>
 
             <Divider>
-                <Row>
+                <Row
+                justify='center'
+                >
                     <Col>
                     Alternate Medical Power of Attorney
                     
