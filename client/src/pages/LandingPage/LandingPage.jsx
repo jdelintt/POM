@@ -177,7 +177,7 @@ const LandingPage = () => {
         </section>
       </section>
       <Row
-        justify="center" style={{backgroundColor: "#73A481"}} 
+        justify="center" style={{ backgroundColor: "#99CC99" }} 
       >
         <Col span={7}>
           <SeniorImage></SeniorImage>

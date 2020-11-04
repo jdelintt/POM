@@ -32,9 +32,11 @@ const handleLogout = () => {
             <div className="mainHeader glass">
 
                 <Row
-                                justify="start"
+                                justify="end"
                                 >
+
                                    <Button
+                                   style={{marginRight: 40}}
                                    onClick={handleLogout}
                                    >
                                        Logout
