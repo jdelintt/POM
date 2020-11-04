@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:300, 400, 700");
 @import url("https://fonts.googleapis.com/css?family=Source + Sans + Pro: 200, 300, 400, 600, 700, 900, 200italic, 300italic, 400italic, 600italic, 700italic, 900italic");
-@import url('https://fonts.googleapis.com/css2?family=Martel:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Martel:wght@700&display=swap");
 /* Override UGG site */
-*{
-  font-family: 'Martel', serif;
+* {
+  font-family: "Martel", serif;
 }
 
 #main {
@@ -28,43 +28,11 @@
 
 /* Typography */
 /**************************/
-#parallax-world-of-ugg h1 {
-  font-family: "Oswald", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: black;
-  padding: 0;
-  margin: 0;
-}
-#parallax-world-of-ugg h2 {
-  font-family: "Oswald", sans-serif;
-  font-size: 70px;
-  letter-spacing: 10px;
+.parallax-world-of-ugg {
   text-align: center;
-  color: white;
-  font-weight: 400;
-  text-transform: uppercase;
-  z-index: 10;
-  opacity: 0.9;
+  background-color: rgb(153, 204, 153);
 }
-#parallax-world-of-ugg h3 {
-  font-family: "Oswald", sans-serif;
-  font-size: 14px;
-  line-height: 0;
-  font-weight: 400;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  color: black;
-}
-#parallax-world-of-ugg p {
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  
 
-}
 .first-character {
   font-weight: 400;
   float: left;
@@ -91,11 +59,10 @@
 #parallax-world-of-ugg .title {
   background: #4d7c69;
   padding: 60px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Martel', serif;
-  text-shadow: 1px 1px 3px #708090
 
+  text-align: center;
+  font-family: "Martel", serif;
+  text-shadow: 1px 1px 3px #708090;
 }
 #parallax-world-of-ugg .title h1 {
   font-size: 35px;
@@ -108,7 +75,7 @@
 
 /* Section - Block */
 /**************************/
-#parallax-world-of-ugg .block {
+/* #parallax-world-of-ugg .block {
   background: white;
   padding: 60px;
   width: 820px;
@@ -127,7 +94,7 @@
   height: 100%;
   background-color: black;
   opacity: 0.7;
-}
+} */
 
 /* JUMBOTRON STYLING */
 
@@ -137,8 +104,7 @@
   text-shadow: 1px 1px 3px #708090;
 }
 
-.jumboText
-{
+.jumboText {
   font-size: 30px;
   text-shadow: 1px 1px 2.5px #708090;
 }
@@ -168,13 +134,23 @@
  .iconStyle {
   width: 100%; 
   margin-top: 5%;
-  box-shadow: "12px 12px 16px #708090"
- }
+  box-shadow: "12px 12px 16px #708090";
+}
 
- .title {
-  font-family: 'Martel', serif
- }
+.title {
+  font-family: "Martel", serif;
+}
 
+<<<<<<< HEAD
+.jumbotron {
+  background-color: #f1f1f1;
+}
+.dividerStyle {
+  text-shadow: 1px 1px 4px #708090;
+  background-color: #73a481;
+  padding-top: 1%;
+}
+=======
  .jumbotron {
    background-color: #f1f1f1;
  }
@@ -184,3 +160,4 @@
   background-color: #73A481;
   padding-top: 1%;
  }
+>>>>>>> 777f1a4752bdba58496c6b4270aaf88ff5760133
