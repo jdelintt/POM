@@ -171,7 +171,7 @@ const LandingPage = () => {
             </Header>
 
             <Row
-            style={{backgroundColor: "#99CC99"}}
+            style={{backgroundColor: "#4D7C69"}}
             >
               <button onClick={handleLogout}>Logout</button>
               <button onClick={handlePDF}>PDF</button>
@@ -179,7 +179,7 @@ const LandingPage = () => {
               
 
             <Row
-            style={{backgroundColor: "#99CC99"}}
+            style={{backgroundColor: "#4D7C69"}}
             justify='center'
             >
 
@@ -198,7 +198,7 @@ const LandingPage = () => {
             </Row>
             
             <Row
-              justify="center" style={{backgroundColor: "#99CC99"}}
+              justify="center" style={{backgroundColor: "#4D7C69"}}
             >
               <Col span={7}>
                 <SeniorImage></SeniorImage>
@@ -213,7 +213,7 @@ const LandingPage = () => {
       
             <Row
               justify="center"
-              style={{ backgroundColor: "#99cc99" }}
+              style={{ backgroundColor: "#4D7C69" }}
             >
               <section id="instructional-part">
                 <div className="ins">
@@ -315,7 +315,7 @@ const LandingPage = () => {
             </Row> */}
             <Row
               justify="center"
-              style={{ backgroundColor: "#99cc99" }}
+              style={{ backgroundColor: "#4D7C69" }}
             >
                   <Jumbotron style={styles.JumboStyles} fluid="lg">
                   <Container fluid="lg">
