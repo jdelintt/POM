@@ -6,19 +6,11 @@ import Container from 'react-bootstrap/Container';
 import './LandingPage.css';
 import Header from "../../components/Header/Header.js";
 import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
-
-
-
-
-
-import ESign from "./../../components/eSign";
-
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
-
-
 import SeniorImage from '../../utils/SVG/SeniorSVG';
 import PDFCreation from '../Forms/AdvancedDirective';
 import 'antd/dist/antd.css';
+import {useHistory} from 'react-router-dom'
 
 const styles = {
   JumboStyles: {
@@ -35,22 +27,11 @@ const styles = {
 
 const LandingPage = () => {
 
-  const { user } = useContext(AuthContext);
+  const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const [PDF, setPDF] = useState({ base64: "", type: "" });
-  const [userData, setUserdata] = useState({})
-
-  useEffect(() => {
-    if (user.username) {
-      API.getUser(user.username)
-        .then(res => {
-          setUserdata(res)
-        })
-
-    }
-  }, [user])
-
-  console.log(userData)
+  
+ 
 
 
   const fullName = `${user.firstName} ${user.lastName}`
@@ -75,7 +56,14 @@ const LandingPage = () => {
   };
 
   const handleLogout = () => {
-    API.logout().then(res => console.log(res))
+    API.logout().then(res => {
+      console.log(res)
+      setIsAuthenticated(false);
+    })
+      .then(() => {
+        history.push("/")
+
+      })
   }
 
   const props = {
@@ -107,9 +95,11 @@ const LandingPage = () => {
   };
 
   const submitADR = (obj) => {
+    
     API.userUpdate(obj)
       .then(res => {
         console.log(res)
+        history.push("/pdf")
       })
   }
 
@@ -123,7 +113,7 @@ const LandingPage = () => {
     const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
 
     setPDF({ base64: basedIt, type: pdfTypeArray2[1] })
-    setUserdata({ ...userData, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
+    setUser({ ...user, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
 
 
   }
@@ -144,12 +134,22 @@ const LandingPage = () => {
     })
   }
 
+  let history = useHistory()
+  const handlePDF = () => {
+    history.push("/pdf")
 
+  }
 
+           
 
-            
+  const key = 'updatable';
 
-
+  const openMessage = () => {
+    message.loading({ content: 'Loading...', key });
+    setTimeout(() => {
+      message.success({ content: 'Loaded!', key, duration: 2 });
+    }, 1000);
+  };
 
 
 
@@ -158,14 +158,17 @@ const LandingPage = () => {
     <Header>
         
       </Header>
-        {/* <button onClick={handleLogout}>Logout</button> */}
+        <button onClick={handleLogout}>Logout</button>
+        
+        
+      
       
       <section id="parallax-world-of-ugg" >
         <section >
           <div className="title">
             <h1 style={{fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</h1>
             <h1 style={{fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</h1>
-            {/* <h1>{fullName(user)}</h1> */}
+            
           </div>
         </section>
       </section>
@@ -211,7 +214,8 @@ const LandingPage = () => {
                 <InfoCircleOutlined />
                 </h1>
               <p className="jumboText">
-                Make sure every input has your information and if you are confused about what to put in there, click the "?"
+                Make sure every input has your information.If you need to better understand any section click on the "?"
+                for more details.
               </p>
           </Col>
             </Container>
@@ -224,7 +228,7 @@ const LandingPage = () => {
               <FileDoneOutlined />
               </h1>
               <p className="jumboText">
-                Once all the information has been inputted, click "Create Advanced Directive".
+                Once all the information has been inputted, double check each section and then click "PDF Creation" button.
               </p>
           </Col>
             </Container>
@@ -250,7 +254,21 @@ const LandingPage = () => {
               <UploadOutlined />
               </h1>
               <p className="jumboText">
-                Click the "upload" button and select the Advanced Directive file that you just saved.
+                Click the "Choose File" button under Step 6 and the file will appear underneath.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 6</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+                <SmileOutlined />
+              </h1>
+              <p className="jumboText">
+                Once you see your pdf underneath, click the submit button.
               </p>
           </Col>
             </Container>
@@ -258,7 +276,22 @@ const LandingPage = () => {
           <Jumbotron style={styles.JumboStyles} fluid="lg">
             <Container fluid="lg">
           <Col >
-              <h1 className="stepHeader">STEP 6</h1>
+              <h1 className="stepHeader">STEP 7</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+                <SmileOutlined />
+              </h1>
+              <p className="jumboText">
+                After clicking the submit button, there is a button called "View PDF". Click the "View PDF"
+                button and you will be taken to a new page where you can email your PDF. POM will send
+                the Advanced Directive to your Primary Care Physician and take care of the rest!
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 8</h1>
               <h1 style={{width: "100%", marginTop: "-2%"}}>
                 <SmileOutlined />
               </h1>
@@ -286,44 +319,42 @@ const LandingPage = () => {
         style={{ backgroundColor: "#99cc99" }}
       >
             <Jumbotron style={styles.JumboStyles} fluid="lg">
-            <Container fluid="lg">
-              <Row>
-              <Col xs={6}>
+
+              <Row
+              justify='center'
+              >
+              <Col>
               <h1>
-        {/* <Upload {...props}>
-          <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload> */}
-        <form className="formStyles">
-          <div className="custom-file mb-3">
+        
+          
             <input type="file" onChange={(e) => {
               handleBase64(e)
             }} />
-          </div>
           
-          <input type="submit" value="Submit" style={{width: "200px"}} className="btn btn-primary btn-block submitBtn" onClick={() => submitADR(userData)} />
-        </form>
+          
+          <input type="submit" value="Submit"  onClick={() => submitADR(user)} />
+       
         </h1>
-        </Col>
-        <Col xs={6} >
         <h1 className="signatureStyles">
-        {/* <embed src={PDF.base64} type={PDF.type} /> */}
-        {console.log(PDF.type)}
-        {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
+        <embed src={PDF.base64} type={PDF.type} />
+      
+        
 
-        <ESign
-          buttonText="Patient Signature"
-          whosSigning="patientSignature"
-        ></ESign>
+        
         </h1>
+        <Button size="large" style={{width: 150}} onClick={handlePDF}>View PDF</Button>
         </Col>
         </Row>
-      </Container>
+
       </Jumbotron>
             </Row>
             <Row
+            style={{ backgroundColor: "#99CC99" }}
             justify="center" className="dividerStyle">
           
-        <Divider>
+        <Divider
+        style={{ backgroundColor: "#99CC99" }}
+        >
           <h1>OR FILL OUT FORM HERE</h1>
           </Divider>
         

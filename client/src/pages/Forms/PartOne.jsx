@@ -30,19 +30,21 @@ const PartOne = () => {
         height: '30px',
         lineHeight: '30px',
       };
-      const openNotificationforGuardian = type => {
-        notification[type]({
-          message: 'What is a guardian?',
-          description:
-            'A guardian is a person chosen by the court to make decisions about personal care. The decisions can include not only health care but other decisions as well. Check the box below to nominate your agent or guardian',
-        });
-      };
-
+      
       const openNotification = placement => {
         notification.warning({
           message: `What is a Medical Power of Attorney`,
           description:
             'This is a friend or family member who could speak on your behalf, should you be unconscious, about what you want for end of life care. This person is someone who knows your choices and can comfortably advocate for them.',
+          placement,
+        });
+      };
+
+      const openNotificationGuardian = placement => {
+        notification.warning({
+          message: `What is a Guardian?`,
+          description:
+            'A guardian is a person chosen by the court to make decisions about personal care. The decisions can include not only health care but other decisions as well. Check the box below to nominate your agent or guardian.',
           placement,
         });
       };
@@ -336,8 +338,10 @@ const PartOne = () => {
                           Nominating a guardian:
                       </Divider>
                   </Row>
-                  <Row>
-                  <Button onClick={() => openNotificationforGuardian('info')}>?</Button>   
+                  <Row
+                  justify='center'
+                  >
+                  <Button onClick={() => openNotificationGuardian('warning')}>?</Button>   
                   </Row>
                   <Row>
 

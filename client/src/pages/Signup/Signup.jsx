@@ -1,8 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import API from "./../../utils/API";
+import {useHistory} from 'react-router-dom'
 
 
 const Signup = props => {
+
+    let history = useHistory()
+
+
     const [user, setUser] = useState({ username: "", password: "", firstName: "", lastName: "", role: "", email : "" })
 
 
@@ -11,13 +16,14 @@ const Signup = props => {
         setUser({ ...user, [event.target.name]: event.target.value })
         console.log(user)
     }
-    const handleLogin = (event) => {
+    const completeSignup = (event) => {
         event.preventDefault()
         console.log("this is before")
         console.log(user)
         API.signup(user).then(res => {
             console.log(res)
             resetForm();
+            history.push("/")
 
 
         })
@@ -27,8 +33,13 @@ const Signup = props => {
         setUser({ firstName: "", lastName: "", role: "", username: "", password: "", email : "" })
     }
 
+    
     return (
         <div>
+            <h1>Already a user? Log in below</h1>
+            <button
+            onClick={() => history.push("/")}
+            >Back to Login Page</button>
             <form>
                 <h3>Sign Up</h3>
                 <label htmlFor="username"> Username: </label>
@@ -71,7 +82,7 @@ const Signup = props => {
                     onChange={handleInputChange}
                     placeholder="role"
                 ></input>
-                <button onClick={handleLogin} type="submit">
+                <button onClick={completeSignup} type="submit">
                     Signup
                 </button>
             </form>
