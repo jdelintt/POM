@@ -159,7 +159,7 @@ const LandingPage = () => {
       <Header sticky="top">
           <ul>
             <li>
-          <button onClick={handleLogout}>Logout</button>
+          {/* <button className="logOut" onClick={handleLogout}>Logout</button> */}
             </li>
           </ul>
         </Header>

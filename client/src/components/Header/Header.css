@@ -11,3 +11,12 @@
     top: 0;
 }
 .glass { z-index: 1; }
+
+.logOut {
+    margin-bottom: 10%;
+    margin-right: 25%;
+}
+
+.POM {
+    margin-left: 10%;
+}

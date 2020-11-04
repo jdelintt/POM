@@ -150,3 +150,6 @@
   background-color: #73a481;
   padding-top: 1%;
 }
+.logOut {
+  z-index: 1;
+}
