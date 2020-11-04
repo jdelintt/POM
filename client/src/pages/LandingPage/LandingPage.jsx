@@ -3,29 +3,21 @@ import API from "./../../utils/API";
 import { AuthContext } from "./../../context/AuthContext";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+<<<<<<< HEAD
 import {useHistory} from 'react-router-dom'
 
 
+=======
+>>>>>>> 777f1a4752bdba58496c6b4270aaf88ff5760133
 import './LandingPage.css';
-
 import Header from "../../components/Header/Header.js";
-
-
-// import ESign from "./../../components/eSign";
-// import SmileOutlined from '../../../node_modules/@ant-design/icons/SmileOutlined';
-// import UploadOutlined from '../../../node_modules/@ant-design/icons/UploadOutlined';
-// import SaveOutlined from '../../../node_modules/@ant-design/icons/SaveOutlined';
-// import FileDoneOutlined from '../../../node_modules/@ant-design/icons/FileDoneOutlined';
-// import InfoCircleOutlined from '../../../node_modules/@ant-design/icons/InfoCircleOutlined';
-// import  EditOutlined from '../../../node_modules/@ant-design/icons/EditOutlined';
-
 import {SmileOutlined, UploadOutlined, SaveOutlined, FileDoneOutlined, InfoCircleOutlined, EditOutlined} from '@ant-design/icons'
 
 
 
 
 
-// import ESign from "./../../components/eSign";
+import ESign from "./../../components/eSign";
 
 import { Row, Col, Card, Upload, message, Divider, Form, Input, Button, Checkbox, Icon } from 'antd'
 
@@ -49,16 +41,25 @@ const styles = {
 
 const LandingPage = () => {
 
-  let history = useHistory()
-
-  const { user, isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [PDF, setPDF] = useState({ base64: "", type: "" });
+  const [userData, setUserdata] = useState({})
 
-  console.log(user)
+  useEffect(() => {
+    if (user.username) {
+      API.getUser(user.username)
+        .then(res => {
+          setUserdata(res)
+        })
 
-  console.log(user)
+    }
+  }, [user])
 
+  console.log(userData)
+
+
+  const fullName = `${user.firstName} ${user.lastName}`
   const { Meta } = Card
 
   const layout = {
@@ -80,19 +81,7 @@ const LandingPage = () => {
   };
 
   const handleLogout = () => {
-    API.logout().then(res => {
-      console.log(res)
-      setIsAuthenticated(false);
-    })
-      .then(() => {
-        history.push("/")
-
-      })
-  }
-
-  const handlePDF = () => {
-    history.push("/pdf")
-
+    API.logout().then(res => console.log(res))
   }
 
   const props = {
@@ -140,7 +129,7 @@ const LandingPage = () => {
     const pdfTypeArray2 = await pdfTypeArray1[0].split(":")
 
     setPDF({ base64: basedIt, type: pdfTypeArray2[1] })
-    setUser({ ...user, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
+    setUserdata({ ...userData, ADirFile: basedIt, ADirFileType: pdfTypeArray2[1] })
 
 
   }
@@ -161,231 +150,201 @@ const LandingPage = () => {
     })
   }
 
-  const renderPage = () => {
-    if (user) {
-      if (user.firstName) {
-        return (
-          <>
-          <Header>
-              
-            </Header>
 
-            <Row
-            style={{backgroundColor: "#4D7C69"}}
-            >
-              <button onClick={handleLogout}>Logout</button>
-              <button onClick={handlePDF}>PDF</button>
-            </Row>
-              
 
-            <Row
-            style={{backgroundColor: "#4D7C69"}}
-            justify='center'
-            >
 
-            <Col>
-            Welcome {user.username}
-            </Col>
-
-              
-                  {/* <p style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</p>
-                  <p style={{fontSize: "45px", fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</p> */}
-                  
-                
-              
             
 
-            </Row>
-            
-            <Row
-              justify="center" style={{backgroundColor: "#4D7C69"}}
-            >
-              <Col span={7}>
-                <SeniorImage></SeniorImage>
-      
-              </Col>
-      
-      
-      
-      
-      
-            </Row>
-      
-            <Row
-              justify="center"
-              style={{ backgroundColor: "#4D7C69" }}
-            >
-              <section id="instructional-part">
-                <div className="ins">
-                  <h1 id="instructionsHeading">Instructions</h1>
-                  
-                </div>
-                  <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                <Col >
-                    <h1 className="stepHeader">STEP 1</h1> 
-                    <h1 style={{width: "100%", marginTop: "-2%"}}>
-                      <EditOutlined />
-                      </h1>
-                    <p className="jumboText">
-                      Fill out the form below in the "Document Creation" section
-                    </p>
-                    
-                </Col>
-                
-                  </Container>
-                </Jumbotron>
-                <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                <Col >
-                    <h1 className="stepHeader">STEP 2</h1>
-                    <h1 style={{width: "100%", marginTop: "-2%"}}>
-                      <InfoCircleOutlined />
-                      </h1>
-                    <p className="jumboText">
-                      Make sure every input has your information and if you are confused about what to put in there, click the "?"
-                    </p>
-                </Col>
-                  </Container>
-                </Jumbotron>
-                <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                <Col >
-                    <h1 className="stepHeader">STEP 3</h1>
-                    <h1 style={{width: "100%", marginTop: "-2%"}}>
-                    <FileDoneOutlined />
-                    </h1>
-                    <p className="jumboText">
-                      Once all the information has been inputted, click "Create Advanced Directive".
-                    </p>
-                </Col>
-                  </Container>
-                </Jumbotron>
-                <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                <Col >
-                    <h1 className="stepHeader">STEP 4</h1>
-                    <h1 style={{width: "100%", marginTop: "-2%"}}>
-                    <SaveOutlined />
-                    </h1>
-                    <p className="jumboText">
-                      The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
-                    </p>
-                </Col>
-                  </Container>
-                </Jumbotron>
-                <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                <Col >
-                    <h1 className="stepHeader">STEP 5</h1>
-                    <h1 style={{width: "100%", marginTop: "-2%"}}>
-                    <UploadOutlined />
-                    </h1>
-                    <p className="jumboText">
-                      Click the "upload" button and select the Advanced Directive file that you just saved.
-                    </p>
-                </Col>
-                  </Container>
-                </Jumbotron>
-                <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                <Col >
-                    <h1 className="stepHeader">STEP 6</h1>
-                    <h1 style={{width: "100%", marginTop: "-2%"}}>
-                      <SmileOutlined />
-                    </h1>
-                    <p className="jumboText">
-                      Now enjoy your Peace Of Mind!
-                    </p>
-                </Col>
-                  </Container>
-                </Jumbotron>
-              </section>
-              <br>
-              </br>
-              <br>
-              </br>
-              <br>
-              </br>
-            </Row>
-            {/* <Row
-              justify="center"
-              style={{ backgroundColor: "#bfbfbe" }}
-            >
-            </Row> */}
-            <Row
-              justify="center"
-              style={{ backgroundColor: "#4D7C69" }}
-            >
-                  <Jumbotron style={styles.JumboStyles} fluid="lg">
-                  <Container fluid="lg">
-                    <Row>
-                    <Col xs={6}>
-                    <h1>
-              {/* <Upload {...props}>
-                <Button icon={<UploadOutlined />}>Click to Upload</Button>
-              </Upload> */}
-              <form className="formStyles">
-                <div className="custom-file mb-3">
-                  <input type="file" onChange={(e) => {
-                    handleBase64(e)
-                  }} />
-                </div>
-                
-                <input type="submit" value="Submit" style={{width: "200px"}} className="btn btn-primary btn-block submitBtn" onClick={() => submitADR(user)} />
-              </form>
-              </h1>
-              </Col>
-              <Col xs={6} >
-              <h1 className="signatureStyles">
-              {/* <embed src={PDF.base64} type={PDF.type} /> */}
-              {console.log(PDF.type)}
-              {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
-      
-              
-              </h1>
-              </Col>
-              </Row>
-            </Container>
-            </Jumbotron>
-                  </Row>
-                  <Row
-                  justify="space-around"
-                 
-                  align="bottom"
-                  className="dividerStyle"
-                  >
-      
-              <Divider>Document Creation Section</Divider>
-      
-              
-              
-            </Row>
-      
-                  <Row>
-                    <PDFCreation></PDFCreation>
-
-
-                  </Row>
-            
-            
-          </>
-        )
-      }
-    }
-  }
 
 
 
 
   return (
     <>
-      {renderPage()}
+    <Header>
+        
+      </Header>
+        {/* <button onClick={handleLogout}>Logout</button> */}
+      
+      <section id="parallax-world-of-ugg" >
+        <section >
+          <div className="title">
+            <h1 style={{fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>Welcome</h1>
+            <h1 style={{fontFamily: "Martel, serif", textShadow: "1px 1px 4px #708090"}}>{user.username}</h1>
+            {/* <h1>{fullName(user)}</h1> */}
+          </div>
+        </section>
+      </section>
+      <Row
+        justify="center" style={{backgroundColor: "#73A481"}} 
+      >
+        <Col span={7}>
+          <SeniorImage></SeniorImage>
+
+        </Col>
+
+      </Row>
+
+      <Row
+        justify="center"
+        style={{ backgroundColor: "#99CC99" }}
+      >
+        <section id="instructional-part">
+          <div className="ins">
+            <h1 id="instructionsHeading">Instructions</h1>
+            
+          </div>
+            <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 1</h1> 
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+                <EditOutlined />
+                </h1>
+              <p className="jumboText">
+                Fill out the form below.
+              </p>
+              
+          </Col>
+          
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 2</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+                <InfoCircleOutlined />
+                </h1>
+              <p className="jumboText">
+                Make sure every input has your information and if you are confused about what to put in there, click the "?"
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 3</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+              <FileDoneOutlined />
+              </h1>
+              <p className="jumboText">
+                Once all the information has been inputted, click "Create Advanced Directive".
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 4</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+              <SaveOutlined />
+              </h1>
+              <p className="jumboText">
+                The Advanced Directive file will be in the bottom left of your screen and it can be saved anywhere on your computer.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 5</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+              <UploadOutlined />
+              </h1>
+              <p className="jumboText">
+                Click the "upload" button and select the Advanced Directive file that you just saved.
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+          <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+          <Col >
+              <h1 className="stepHeader">STEP 6</h1>
+              <h1 style={{width: "100%", marginTop: "-2%"}}>
+                <SmileOutlined />
+              </h1>
+              <p className="jumboText">
+                Now enjoy your Peace Of Mind!
+              </p>
+          </Col>
+            </Container>
+          </Jumbotron>
+        </section>
+        <br>
+        </br>
+        <br>
+        </br>
+        <br>
+        </br>
+      </Row>
+      {/* <Row
+        justify="center"
+        style={{ backgroundColor: "#bfbfbe" }}
+      >
+      </Row> */}
+      <Row
+        justify="center"
+        style={{ backgroundColor: "#99cc99" }}
+      >
+            <Jumbotron style={styles.JumboStyles} fluid="lg">
+            <Container fluid="lg">
+              <Row>
+              <Col xs={6}>
+              <h1>
+        {/* <Upload {...props}>
+          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+        </Upload> */}
+        <form className="formStyles">
+          <div className="custom-file mb-3">
+            <input type="file" onChange={(e) => {
+              handleBase64(e)
+            }} />
+          </div>
+          
+          <input type="submit" value="Submit" style={{width: "200px"}} className="btn btn-primary btn-block submitBtn" onClick={() => submitADR(userData)} />
+        </form>
+        </h1>
+        </Col>
+        <Col xs={6} >
+        <h1 className="signatureStyles">
+        {/* <embed src={PDF.base64} type={PDF.type} /> */}
+        {console.log(PDF.type)}
+        {PDF.type.includes("image") ? <img src={PDF.base64} /> : <embed src={PDF.base64} type={PDF.type} />}
+
+        <ESign
+          buttonText="Patient Signature"
+          whosSigning="patientSignature"
+        ></ESign>
+        </h1>
+        </Col>
+        </Row>
+      </Container>
+      </Jumbotron>
+            </Row>
+            <Row
+            justify="center" className="dividerStyle">
+          
+        <Divider>
+          <h1>OR FILL OUT FORM HERE</h1>
+          </Divider>
+        
+      </Row>
+      <Row 
+      justify="center"
+        style={{ backgroundColor: "#99CC99" }}>
+      <Jumbotron style={styles.JumboStyles} fluid="lg">
+      <Container fluid="lg">
+      <PDFCreation></PDFCreation>
+      </Container>
+      </Jumbotron>
+      </Row>
     </>
   )
-
-
-
 };
 
 export default LandingPage;
